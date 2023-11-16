@@ -1,4 +1,4 @@
 <?php
         include 'includes/header.php';
     ?>
-<h1>My home page</h1>
+<h1>This is my contact us page</h1>

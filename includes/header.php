@@ -17,39 +17,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="page1.php">Page 1</a>
+          <a class="nav-link" href="index.php">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page2.php">Page2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page3.php">Page3</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page4.php">Page4</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page5.php">Page5</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page6.php">Page6</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page7.php">Page7</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page8.php">Page8</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page9.php">Page9</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="page10.php">Page10</a>
-        </li>
+
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -58,10 +33,17 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="aboutUs.php">About Us</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contactUs.php">Contact Us</a>
+        </li>
+           
       </ul>
+
+      <!--add shooping and wishlist -->
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
