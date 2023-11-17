@@ -1,6 +1,4 @@
 <?php
         include 'includes/header.php';
     ?>
-<h1>My home page</h1>
-
-
+<h4>Ceramics product page</h4>
