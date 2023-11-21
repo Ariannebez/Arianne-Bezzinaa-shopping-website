@@ -3,3 +3,7 @@
     ?>
     
 <h4>Bags product page</h4>
+
+
+
+
