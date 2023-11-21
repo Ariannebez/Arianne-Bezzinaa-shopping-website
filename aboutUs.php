@@ -1,6 +1,7 @@
 <?php
         include 'includes/header.php';
     ?>
+    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,19 +10,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>About Us</title>
+
+    <style>
+        
+    </style>
 </head>
 <body>
-<div class="container-fluid text-center">
-    <div class="row p-5">
+<div class="container-fluid text-center mt-3">
+    <div class="row">
         <!-- 2 cols in 1 row -->
         <!--Img col -->
-        <div class="col align-self-center" >
-        <img class="rounded float-start" src="https://media.istockphoto.com/id/1211291912/photo/girl-is-making-new-beaded-jevellery.jpg?s=612x612&w=0&k=20&c=1hIWn9HpGSBrlpbJ_MF_-QPBzC3iB9AcysYURE6zod4=" alt="Women making art">
-        </div>
+        <div class="col" >
+        
+        <img class="rounded w-100" src="https://media.istockphoto.com/id/1211291912/photo/girl-is-making-new-beaded-jevellery.jpg?s=612x612&w=0&k=20&c=1hIWn9HpGSBrlpbJ_MF_-QPBzC3iB9AcysYURE6zod4=" alt="Women making art">
+        
+    </div>
 
         <!--Text area col-->
         <div class="col align-self-center">
-            <p>
+    
+            <p >
 
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
                 dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -38,3 +46,7 @@
 
 </body>
 </html>
+
+<?php
+        include 'includes/footer.php';
+    ?>
