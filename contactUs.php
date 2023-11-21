@@ -1,7 +1,7 @@
 <?php
         include 'includes/header.php';
     ?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,14 +37,14 @@
                             <div class="col">
                               <div>
                                 <label for="firstName">First Name</label>
-                                
+
                                 <input class="w-100" type="text" name="firstName" id="firstName"placeholder="Amy">
                               </div>  
                             </div>
                             <div class="col">
                                 <div>
                                     <label for="lastName">Last Name</label>
-                                    
+
                                     <input class="w-100" type="text" name="lastName" id="lastName" placeholder="Borg">
                                   </div>
                             </div>
@@ -55,7 +55,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="email">Email Address</label>
-                                
+
                                 <input class="w-100" type="email" name="email" id="email" placeholder="mail@hotmail.com">
                             </div>
                         </div>
@@ -86,7 +86,6 @@
             </div>
 
             <!--This div will only show when we have errors.-->
-            <!--something not working right-->
             <div class="col-4">
                <div id="errors" class="card border-danger mb-3 d-none text-danger">
                 <h4>Invalid Input</h4>
@@ -100,8 +99,8 @@
 
 
     <!--Main con closes-->
-      
+
     <script src="includes/conscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
-</html>
+</html> 
