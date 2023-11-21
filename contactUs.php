@@ -86,6 +86,7 @@
             </div>
 
             <!--This div will only show when we have errors.-->
+            <!--something not working right-->
             <div class="col-4">
                <div id="errors" class="card border-danger mb-3 d-none text-danger">
                 <h4>Invalid Input</h4>
