@@ -7,6 +7,8 @@
 </head>
 <body>
     <!--footer-->
-
+    <footer class=" g-dark">
+    <p>Footer</p>
+    </footer>
 </body>
 </html>
