@@ -25,11 +25,11 @@
     <div class="row justify-content-center">
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
+        <img src="https://i.pinimg.com/736x/a0/d8/19/a0d8190a25301c496c8a76b4d992c7a9.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Jewellery</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="jewellery.php" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Tote Bag</h5>
+        <p class="card-text"><h2>&euro; 10</h2></p>
+        <a href="totebag.php" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
         </div>
@@ -39,19 +39,19 @@
         <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="bags.php" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text"><h2>&euro; 25</h2></p>
+        <a href="bag.php" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
         </div>
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://i.etsystatic.com/16014158/r/il/edc565/1504841910/il_300x300.1504841910_rxpw.jpg" class="card-img-top" alt="...">
+        <img src="https://img.joomcdn.net/7a2ad0b8026836c29ecd1f0e7fd1f9597737c717_original.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Ceramics</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="ceramics.php" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Sholder Bag</h5>
+        <p class="card-text"><h2>&euro; 35</h2></p>
+        <a href="sholderbag.php" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
         </div>
@@ -59,12 +59,12 @@
 
    <div class="row justify-content-center mt-5">
    <div class="col-auto">
-        <div class="card" style="width: 18rem;">
-        <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
+   <div class="card" style="width: 18rem;">
+        <img src="https://i.pinimg.com/736x/a0/d8/19/a0d8190a25301c496c8a76b4d992c7a9.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Jewellery</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="jewellery.php" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Tote Bag</h5>
+        <p class="card-text"><h2>&euro; 10</h2></p>
+        <a href="totebag.php" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
         </div>
@@ -74,20 +74,19 @@
         <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="bags.php" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text"><h2>&euro; 25</h2></p>
+        <a href="bag.php" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
         </div>
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://i.etsystatic.com/16014158/r/il/edc565/1504841910/il_300x300.1504841910_rxpw.jpg" class="card-img-top" alt="...">
+        <img src="https://img.joomcdn.net/7a2ad0b8026836c29ecd1f0e7fd1f9597737c717_original.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Ceramics</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="ceramics.php" class="btn btn-primary">Go somewhere</a>
-        </div>
+        <h5 class="card-title">Sholder Bag</h5>
+        <p class="card-text"><h2>&euro; 35</h2></p>
+        <a href="sholderbag.php" class="btn btn-primary">Go somewhere</a>
         </div>
         </div>
    </div>
