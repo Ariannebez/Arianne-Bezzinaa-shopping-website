@@ -27,31 +27,31 @@
         <div class="card" style="width: 18rem;">
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Jewellery</h5>
+        <h5 class="card-title">Jewellery Set</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="jewellery.php" class="btn btn-primary">Go somewhere</a>
+        <a href="jewelleryset.php" class="btn btn-primary">More detials</a>
         </div>
         </div>
         </div>
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
+        <img src="https://static.wixstatic.com/media/dc83e1_ced884b31f85409ba4e990ad5fa20deb~mv2.jpeg/v1/fill/w_520,h_520,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dc83e1_ced884b31f85409ba4e990ad5fa20deb~mv2.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Bags</h5>
+        <h5 class="card-title">Flower Ring</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="bags.php" class="btn btn-primary">Go somewhere</a>
+        <a href="ring.php" class="btn btn-primary">More details</a>
         </div>
         </div>
         </div>
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://i.etsystatic.com/16014158/r/il/edc565/1504841910/il_300x300.1504841910_rxpw.jpg" class="card-img-top" alt="...">
+        <img src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2022/12/LV243.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Ceramics</h5>
+        <h5 class="card-title">Earrings</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="ceramics.php" class="btn btn-primary">Go somewhere</a>
+        <a href="earrings.php" class="btn btn-primary">More details</a>
         </div>
         </div>
         </div>
@@ -99,3 +99,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php
+        include 'includes/footer.php';
+    ?>

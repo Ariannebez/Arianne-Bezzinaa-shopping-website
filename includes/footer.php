@@ -6,9 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <!--footer-->
-    <footer class=" g-dark">
-    <p>Footer</p>
-    </footer>
+    <div class="container-fluid bg-custom mt-4">
+        <div class="row">
+        <h1>footer</h1>
+        </div>
+    </div>
 </body>
 </html>
