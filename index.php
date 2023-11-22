@@ -27,22 +27,22 @@
         <div class="carousel-item active">
             <img src="https://decobate.com/wp-content/uploads/2023/05/Copy-of-etsy-35.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+            <h5>Ceramics</h5>
+            <p>Made by hand</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src="https://weareportugal.com/cdn/shop/collections/ceramics-header.png?v=1640640569" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
+            <h5>Get your personalized Ceramics</h5>
+            <p>You can choose from a vartiey of ceramic products</p>
             </div>
         </div>
         <div class="carousel-item">
             <img src="https://t4.ftcdn.net/jpg/03/97/34/39/360_F_397343924_6WlXOaMVHNKkhMs2l8AHJ5e9MQ03YiBU.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+            <h5>Jewellery</h5>
+            <p>Hand made jewellery</p>
             </div>
         </div>
         </div>
@@ -66,8 +66,8 @@
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Jewellery</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="jewellery.php" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text">Explore our exclusive collection of handmade jewelry, where artistry meets individuality. Each piece tells a story, making your choice truly special.</p>
+        <a href="jewellery.php" class="btn btn-primary">Vist Jewellery</a>
         </div>
         </div>
         </div>
@@ -77,8 +77,8 @@
         <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="bags.php" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text">Discover our exclusive line of handmade bags, where craftsmanship meets individuality. Each piece tells a unique story, ensuring a distinctive accessory.</p>
+        <a href="bags.php" class="btn btn-primary">Vist Bags</a>
         </div>
         </div>
         </div>
@@ -88,8 +88,8 @@
         <img src="https://i.etsystatic.com/16014158/r/il/edc565/1504841910/il_300x300.1504841910_rxpw.jpg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Ceramics</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="ceramics.php" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text">Discover unique handmade ceramics, each piece telling a story. Elevate your space with exquisite craftsmanship and individuality in every creation.</p>
+        <a href="ceramics.php" class="btn btn-primary">Vist Ceramics</a>
         </div>
         </div>
         </div>
