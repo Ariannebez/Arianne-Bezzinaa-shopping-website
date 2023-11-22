@@ -7,7 +7,12 @@
     min-height: 200px;
 }
 
-.svgColour{
-    color: #1f4172;
+.btn{
+    color: #ffff;
     background-color: #1f4172;
+}
+
+.img{
+    height: 200px;
+    width: 200px;
 }

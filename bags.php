@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
 <!--Image  slide show -->
@@ -29,7 +30,7 @@
         <div class="card-body">
         <h5 class="card-title">Tote Bag</h5>
         <p class="card-text"><h2>&euro; 10</h2></p>
-        <a href="totebag.php" class="btn btn-primary">Go somewhere</a>
+        <a href="totebag.php" class="btn btn-primary">More Details</a>
         </div>
         </div>
         </div>
@@ -40,7 +41,7 @@
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
         <p class="card-text"><h2>&euro; 25</h2></p>
-        <a href="bag.php" class="btn btn-primary">Go somewhere</a>
+        <a href="bag.php" class="btn btn-primary">More Details</a>
         </div>
         </div>
         </div>
@@ -51,7 +52,7 @@
         <div class="card-body">
         <h5 class="card-title">Sholder Bag</h5>
         <p class="card-text"><h2>&euro; 35</h2></p>
-        <a href="sholderbag.php" class="btn btn-primary">Go somewhere</a>
+        <a href="sholderbag.php" class="btn btn-primary">More Details</a>
         </div>
         </div>
         </div>
@@ -64,7 +65,7 @@
         <div class="card-body">
         <h5 class="card-title">Tote Bag</h5>
         <p class="card-text"><h2>&euro; 10</h2></p>
-        <a href="totebag.php" class="btn btn-primary">Go somewhere</a>
+        <a href="totebag.php" class="btn btn-primary">More Details</a>
         </div>
         </div>
         </div>
@@ -75,7 +76,7 @@
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
         <p class="card-text"><h2>&euro; 25</h2></p>
-        <a href="bag.php" class="btn btn-primary">Go somewhere</a>
+        <a href="bag.php" class="btn btn-primary">More Details</a>
         </div>
         </div>
         </div>
@@ -86,11 +87,12 @@
         <div class="card-body">
         <h5 class="card-title">Sholder Bag</h5>
         <p class="card-text"><h2>&euro; 35</h2></p>
-        <a href="sholderbag.php" class="btn btn-primary">Go somewhere</a>
+        <a href="sholderbag.php" class="btn btn-primary">More Details</a>
         </div>
         </div>
    </div>
  </div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -99,4 +101,8 @@
 </body>
 </html>
 
+<?php
+        include 'includes/footer.php';
+    ?>
+    
 
