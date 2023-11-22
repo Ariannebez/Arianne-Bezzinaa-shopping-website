@@ -6,3 +6,8 @@
 .carousel-inner{
     min-height: 200px;
 }
+
+.custom-card{
+    height: 300px;
+    width: 300px;
+}

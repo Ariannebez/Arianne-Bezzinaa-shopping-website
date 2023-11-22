@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<!--Image  slide show -->
+
  <div class="container">
     <div class="row justify-content-center mt-5">
     <h4>Jewellery product page</h4>
@@ -28,7 +28,7 @@
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Jewellery Set</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text"><h2>&euro; 25</h2></p>
         <a href="jewelleryset.php" class="btn btn-primary">More detials</a>
         </div>
         </div>
@@ -36,10 +36,10 @@
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://static.wixstatic.com/media/dc83e1_ced884b31f85409ba4e990ad5fa20deb~mv2.jpeg/v1/fill/w_520,h_520,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/dc83e1_ced884b31f85409ba4e990ad5fa20deb~mv2.jpeg" class="card-img-top" alt="...">
+        <img src="https://www.candere.com/media/jewellery/images/GR00103__1.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Flower Ring</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">Heart Ring</h5>
+        <p class="card-text"><h2>&euro; 20</h2></p>
         <a href="ring.php" class="btn btn-primary">More details</a>
         </div>
         </div>
@@ -50,7 +50,7 @@
         <img src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2022/12/LV243.jpg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Earrings</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text"><h2>&euro; 15</h2></p>
         <a href="earrings.php" class="btn btn-primary">More details</a>
         </div>
         </div>
@@ -62,35 +62,36 @@
         <div class="card" style="width: 18rem;">
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Jewellery</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="jewellery.php" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Jewellery Set</h5>
+        <p class="card-text"><h2>&euro; 25</h2></p>
+        <a href="jewelleryset.php" class="btn btn-primary">More detials</a>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-auto">
+        <div class="card card" style="width: 18rem;">
+        <img src="https://www.candere.com/media/jewellery/images/GR00103__1.jpeg" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">Heart Ring</h5>
+        <p class="card-text"><h2>&euro; 20</h2></p>
+        <a href="ring.php" class="btn btn-primary">More details</a>
         </div>
         </div>
         </div>
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
+        <img src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2022/12/LV243.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Bags</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="bags.php" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Handmade Crystal Earrings</h5>
+        <p class="card-text"><h2>&euro; 35</h2></p>
+        <a href="earrings.php" class="btn btn-primary">More details</a>
         </div>
         </div>
         </div>
-
-        <div class="col-auto">
-        <div class="card" style="width: 18rem;">
-        <img src="https://i.etsystatic.com/16014158/r/il/edc565/1504841910/il_300x300.1504841910_rxpw.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">Ceramics</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="ceramics.php" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div>
-        </div>
-   </div>
+   
+</div> 
  </div>
 
 
