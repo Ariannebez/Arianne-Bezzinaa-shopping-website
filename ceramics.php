@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
 <!--Image  slide show -->
@@ -25,22 +26,22 @@
     <div class="row justify-content-center">
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
+        <img src="https://omceramic.com/cdn/shop/products/IMG_3895copyss.jpg?v=1602198615" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Jewellery</h5>
+        <h5 class="card-title">Ceramic Mugs</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="jewellery.php" class="btn btn-primary">Go somewhere</a>
+        <a href=" " class="btn btn-primary">View Details</a>
         </div>
         </div>
         </div>
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
+        <img src="https://assets.bonappetit.com/photos/615f2c3070c4c9f7cafe184a/1:1/w_1205,h_1205,c_limit/Ceramic-Dinnerware-Roundup.jpg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="bags.php" class="btn btn-primary">Go somewhere</a>
+        <a href=" " class="btn btn-primary">View Details</a>
         </div>
         </div>
         </div>
@@ -51,7 +52,7 @@
         <div class="card-body">
         <h5 class="card-title">Ceramics</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="ceramics.php" class="btn btn-primary">Go somewhere</a>
+        <a href=" " class="btn btn-primary">View Details</a>
         </div>
         </div>
         </div>
@@ -59,23 +60,23 @@
 
    <div class="row justify-content-center mt-5">
    <div class="col-auto">
-        <div class="card" style="width: 18rem;">
-        <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
+   <div class="card" style="width: 18rem;">
+        <img src="https://omceramic.com/cdn/shop/products/IMG_3895copyss.jpg?v=1602198615" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">Jewellery</h5>
+        <h5 class="card-title">Ceramic Mugs</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="jewellery.php" class="btn btn-primary">Go somewhere</a>
+        <a href=" " class="btn btn-primary">View Details</a>
         </div>
         </div>
         </div>
 
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
-        <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
+        <img src="https://assets.bonappetit.com/photos/615f2c3070c4c9f7cafe184a/1:1/w_1205,h_1205,c_limit/Ceramic-Dinnerware-Roundup.jpg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="bags.php" class="btn btn-primary">Go somewhere</a>
+        <a href=" " class="btn btn-primary">View Details</a>
         </div>
         </div>
         </div>
@@ -86,7 +87,7 @@
         <div class="card-body">
         <h5 class="card-title">Ceramics</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="ceramics.php" class="btn btn-primary">Go somewhere</a>
+        <a href=" " class="btn btn-primary">View Details</a>
         </div>
         </div>
         </div>
