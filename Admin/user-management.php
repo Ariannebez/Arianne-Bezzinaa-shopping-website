@@ -59,8 +59,7 @@
     
 
     <div class="container mt-5">
-    
-    </div>
+     
     <div class="col"><h2>User Management</h2>
     <table class="table table-bordered">
       <thead>
@@ -103,7 +102,7 @@
       </tbody>
     </table></div>
   </div>
-
+</div>
    
 
 

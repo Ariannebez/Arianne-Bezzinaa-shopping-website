@@ -61,7 +61,7 @@
 
  <!--Cards-->
  <div class="container mt-5 ">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-3">
         <div class="col-auto">
         <div class="card" style="width: 18rem;">
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">

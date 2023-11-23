@@ -58,7 +58,7 @@
         </div>
     </div>
 
-   <div class="row justify-content-center mt-5">
+   <div class="row justify-content-center mt-5 mb-3">
    <div class="col-auto">
    <div class="card" style="width: 18rem;">
         <img src="https://i.pinimg.com/736x/a0/d8/19/a0d8190a25301c496c8a76b4d992c7a9.jpg" class="card-img-top" alt="...">

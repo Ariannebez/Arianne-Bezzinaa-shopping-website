@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
-<div class="container login-container mt-5">
+<div class="container login-container mt-5 ">
     <div class="row mt-5 text-center"><h1>Log in</h1></div>
     <form>
   <div class="mb-3">
@@ -32,7 +32,7 @@
     </div>  
 </div>
 
-<div class="container login-container mt-5">
+<div class="container login-container mt-5 mb-5">
     <div class="row text-center"><h1>Sing Up</h1></div>
     <div class="row"><div class="input-group">
   <span class="input-group-text">First and last name</span>

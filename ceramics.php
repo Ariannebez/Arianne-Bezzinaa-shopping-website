@@ -58,7 +58,7 @@
         </div>
     </div>
 
-   <div class="row justify-content-center mt-5">
+   <div class="row justify-content-center mt-5 mb-3">
    <div class="col-auto">
    <div class="card" style="width: 18rem;">
         <img src="https://omceramic.com/cdn/shop/products/IMG_3895copyss.jpg?v=1602198615" class="card-img-top" alt="...">

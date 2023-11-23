@@ -16,7 +16,7 @@
 <body>
 
  <div class="container">
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center mt-5 ">
     <h4>Jewellery product page</h4>
     </div>
  </div> 
@@ -58,7 +58,7 @@
         </div>
     </div>
 
-   <div class="row justify-content-center mt-5">
+   <div class="row justify-content-center mt-5 mb-3">
    <div class="col-auto">
         <div class="card" style="width: 18rem;">
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">

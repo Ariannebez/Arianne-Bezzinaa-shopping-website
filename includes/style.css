@@ -24,7 +24,15 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
- 
+ .imgdiv{
+    height: 250px;
+    width: 250px;
+ }
+
+ .cardbs{
+    height: 250px;
+    width: 100%;
+ }
 
 
  

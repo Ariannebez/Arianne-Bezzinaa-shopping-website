@@ -19,7 +19,7 @@
 <div class="card mb-3 w-100" style="">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="https://bycharlotte.com.au/cdn/shop/files/14k-2_385x.jpg?v=1680239002" class="img-fluid rounded-start" alt="...">
+      <img class="imgdiv" src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2020/06/IMG_1096.jpg" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -49,7 +49,7 @@
 <div class="card mb-3 w-100" style="">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="https://bycharlotte.com.au/cdn/shop/files/14k-2_385x.jpg?v=1680239002" class="img-fluid rounded-start" alt="...">
+      <img class="imgdiv" src="https://bycharlotte.com.au/cdn/shop/files/14k-2_385x.jpg?v=1680239002" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -76,7 +76,7 @@
 <!--2 nd card end-->
 
 <div class="row">
-<div class="card w-100">
+<div class="card cardbs mb-3">
   <div class="card-header">
    Payment
   </div>
@@ -98,4 +98,5 @@
     <?php
         include 'includes/footer.php';
     ?>
+    
     
