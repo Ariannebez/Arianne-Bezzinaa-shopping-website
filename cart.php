@@ -83,7 +83,7 @@
   <div class="card-body">
     <h5 class="card-title">Procced to payment</h5>
     <p class="card-text">Your total is &euro; 60</p>
-    <a href="#" class="btn btn-primary">Pay</a>
+    <a href="#" class="btn btn-primary">Pay</a> or <a href="#" class="btn btn-primary">Cancel Order</a>
   </div>
 </div>
 </div>

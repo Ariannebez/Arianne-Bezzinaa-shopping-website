@@ -68,7 +68,7 @@
         <div class="card-body">
         <h5 class="card-title">Jewellery</h5>
         <p class="card-text">Explore our exclusive collection of handmade jewelry, where artistry meets individuality. Each piece tells a story, making your choice truly special.</p>
-        <a href="jewellery.php" class="btn btn-primary">Vist Jewellery</a>
+        <a href="jewellery.php" class="btn btn-primary">Visit Jewellery</a>
         </div>
         </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
         <p class="card-text">Discover our exclusive line of handmade bags, where craftsmanship meets individuality. Each piece tells a unique story, ensuring a distinctive accessory.</p>
-        <a href="bags.php" class="btn btn-primary">Vist Bags</a>
+        <a href="bags.php" class="btn btn-primary">Visit Bags</a>
         </div>
         </div>
         </div>
@@ -90,7 +90,7 @@
         <div class="card-body">
         <h5 class="card-title">Ceramics</h5>
         <p class="card-text">Discover unique handmade ceramics, each piece telling a story. Elevate your space with exquisite craftsmanship and individuality in every creation.</p>
-        <a href="ceramics.php" class="btn btn-primary">Vist Ceramics</a>
+        <a href="ceramics.php" class="btn btn-primary">Visit Ceramics</a>
         </div>
         </div>
         </div>

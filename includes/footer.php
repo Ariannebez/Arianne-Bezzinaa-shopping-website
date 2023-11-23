@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container-fluid bg-custom mt-4">
-        <div class="row">
-        <h1>footer</h1>
+    <div class="container-fluid bg-custom text-light">
+        <div class="row ">
+        <h1>© 2023 Your Website</h1>
         </div>
     </div>
 </body>

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
-<div class="container ">
+<div class="container login-container mt-5">
     <div class="row mt-5 text-center"><h1>Log in</h1></div>
     <form>
   <div class="mb-3">
@@ -32,7 +32,7 @@
     </div>  
 </div>
 
-<div class="container">
+<div class="container login-container mt-5">
     <div class="row text-center"><h1>Sing Up</h1></div>
     <div class="row"><div class="input-group">
   <span class="input-group-text">First and last name</span>
@@ -71,7 +71,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
-
 <?php
         include 'includes/footer.php';
     ?>
