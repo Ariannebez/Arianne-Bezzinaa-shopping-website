@@ -31,7 +31,7 @@
 </form>
     </div>  
 </div>
-
+<!--Sing up area with input fields and buttons-->
 <div class="container login-container mt-5 mb-5">
     <div class="row text-center"><h1>Sing Up</h1></div>
     <div class="row"><div class="input-group">

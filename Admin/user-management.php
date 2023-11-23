@@ -81,9 +81,9 @@
           <td>ari@hotmail.com</td>
           <td>Ari</td>
           <td>Doe</td>
-          <td>customer</td>
           <td>Yes</td>
           <td>.....</td>
+          <td>34567876</td>
           <td><button type="button" class="btn btn-primary">Edit</button><button type="button" class="btn btn-danger">Delete</button></td>
           
         </tr>
@@ -92,9 +92,9 @@
           <td>ari@hotmail.com</td>
           <td>Ari</td>
           <td>Doe</td>
-          <td>customer</td>
           <td>Yes</td>
           <td>.....</td>
+          <td>44567</td>
           <td><button type="button" class="btn btn-primary">Edit</button><button type="button" class="btn btn-danger">Delete</button></td>
           
         </tr>
