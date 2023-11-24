@@ -36,7 +36,7 @@
         </div>
 
         <div class="col-auto">
-        <div class="card" style="width: 18rem;">
+        <div class="card cardb" style="width: 18rem;">
         <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
