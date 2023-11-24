@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="container-fluid text-center mt-3">
-    <div class="row">
+    <div class="row mb-5">
         <!-- 2 cols in 1 row -->
         <!--Img col -->
         <div class="col" >

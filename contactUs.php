@@ -28,12 +28,12 @@
                     <div class="container">
 
                         <!--Titel box-->
-                        <div class="row mt-4"> 
+                        <div class="row mt-5"> 
                             <h1>Do you have any problems ?</h1>
                         </div>
 
                         <!--name and surname box-->
-                        <div class="row"> 
+                        <div class="row mt-3"> 
                             <div class="col">
                               <div>
                                 <label for="firstName">First Name</label>
@@ -70,7 +70,7 @@
                         </div>
 
                         <!--Button`s-->
-                    <div class="row">
+                    <div class="row mt-5 mb-5">
                         <div class="col-6 d-grid gap-2">
                             <button type="submit" class="btn btn-success">Send</button>
                         </div>

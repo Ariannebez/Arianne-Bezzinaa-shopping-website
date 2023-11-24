@@ -37,13 +37,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href=""> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"> </a>
+              <a class="nav-link" href="user-management.php">User Management</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"></a>
+              <a class="nav-link" href="review-management.php">Review Management</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order-management.php">Order Management</a>
             </li>
           </ul>
           <!-- ml-auto pushes the search box and button to the right -->
@@ -56,10 +59,9 @@
       </nav>
     </div>
     
-    
 
     <div class="container mt-5">
-     
+    
     <div class="col"><h2>User Management</h2>
     <table class="table table-bordered">
       <thead>
