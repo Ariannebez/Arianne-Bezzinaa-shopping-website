@@ -1,3 +1,11 @@
+/* custom.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+
 .bg-custom {
     background-color: #1f4172;
     
@@ -10,10 +18,7 @@
 .btn{
     color: #ffff;
     background-color: #1f4172;
-    
-    align-content: center;
 }
-
 
 
 
