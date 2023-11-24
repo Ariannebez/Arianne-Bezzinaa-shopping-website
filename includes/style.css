@@ -1,9 +1,23 @@
 /* custom.css */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;   
 }
 
+.card{
+    border-color:#1f4172;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.textc{
+    color: #1f4172;
+}
+
+button.btn-primary:hover {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
 
 
 .bg-custom {
@@ -17,17 +31,16 @@ body {
 
 .btn{
     color: #ffff;
-    background-color: #1f4172;
+    background-color:  #1f4172;
+    
 }
 
 
 
-.login-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.btn-primary:hover {
+    background-color: #febbbb;
+    /* Adjust other styles as needed for the hover state */
+}
 
  .imgdiv{
     height: 250px;
