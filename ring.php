@@ -35,13 +35,13 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-    <div class="carousel-item active">
+    <div class="carousel-item active mb-5">
     <img src="https://www.candere.com/media/jewellery/images/GR00103__1.jpeg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item mb-5">
     <img src="https://www.candere.com/media/jewellery/images/GR00103__3.jpeg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item mb-5">
     <img src="https://www.candere.com/media/jewellery/images/GR00103__2.jpeg" class="d-block w-100" alt="...">
     </div>
     </div>

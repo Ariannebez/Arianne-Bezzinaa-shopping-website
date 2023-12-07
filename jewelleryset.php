@@ -26,7 +26,7 @@
 </div>
 
 <div class="row mt-3">
-<div class="col">
+<div class="col mb-5">
     <!--carousel -->
     <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
@@ -35,13 +35,13 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-    <div class="carousel-item active">
+    <div class="carousel-item active mb-5">
     <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item mb-5">
     <img src="https://i.etsystatic.com/17597418/r/il/4d680f/2541038497/il_570xN.2541038497_q29t.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item mb-5">
     <img src="https://i.etsystatic.com/18319694/r/il/20e873/3242883736/il_570xN.3242883736_ofh8.jpg" class="d-block w-100" alt="...">
     </div>
     </div>

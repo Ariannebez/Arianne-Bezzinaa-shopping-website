@@ -1,7 +1,8 @@
 /* custom.css */
 
 body {
-    font-family:Arial, Helvetica, sans-serif;   
+    font-family:Arial, Helvetica, sans-serif; 
+    
 }
 
 h1, h2, h3, h4, h5, h6, p{
@@ -11,8 +12,9 @@ h1, h2, h3, h4, h5, h6, p{
 .card{
     border-color:#1f4172;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 5px;  
 }
+
 
 .textc{
     color: #1f4172;

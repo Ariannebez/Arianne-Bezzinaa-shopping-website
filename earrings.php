@@ -26,7 +26,7 @@
 </div>
 
 <div class="row mt-3">
-<div class="col">
+<div class="col mb-5">
     <!--carousel -->
     <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
@@ -35,13 +35,13 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-    <div class="carousel-item active">
+    <div class="carousel-item active mb-5">
     <img src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2022/12/LV243.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item mb-5">
     <img src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2023/06/PO59-300x300.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item mb-5">
     <img src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2023/07/JQ11-300x300.jpg" class="d-block w-100" alt="...">
     </div>
     </div>

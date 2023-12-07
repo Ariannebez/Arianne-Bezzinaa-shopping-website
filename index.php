@@ -60,10 +60,10 @@
  </div>   
 
  <!--Cards-->
- <div class="container mt-5 ">
-    <div class="row justify-content-center mb-3">
+ <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
         <div class="col-auto">
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-5" style="width: 18rem;">
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Jewellery</h5>
@@ -74,7 +74,7 @@
         </div>
 
         <div class="col-auto">
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-5" style="width: 18rem;">
         <img src="https://cf.shopee.sg/file/9eaaa8f34906eeef7faaf3913db83d6b" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Bags</h5>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="col-auto">
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-5" style="width: 18rem;">
         <img src="https://i.etsystatic.com/16014158/r/il/edc565/1504841910/il_300x300.1504841910_rxpw.jpg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Ceramics</h5>

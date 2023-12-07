@@ -59,7 +59,7 @@
         </div>
     </div>
 
-   <div class="row justify-content-center mt-5 mb-3">
+   <div class="row justify-content-center mt-5 mb-5">
    <div class="col-auto">
         <div class="card" style="width: 18rem;">
         <img src="https://www.daisyjewellery.com/cdn/shop/collections/GoldJewellery_1200x1200.jpg?v=1666184925" class="card-img-top" alt="...">
@@ -72,7 +72,7 @@
         </div>
 
         <div class="col-auto">
-        <div class="card card" style="width: 18rem;">
+        <div class="card" style="width: 18rem;">
         <img src="https://www.candere.com/media/jewellery/images/GR00103__1.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">Heart Ring</h5>
