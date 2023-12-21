@@ -6,10 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container-fluid bg-custom text-light">
+    <div class="container-fluid bg-custom text-light ">
+        <footer>
         <div class="row ">
         <h1>© 2023 Your Website</h1>
         </div>
+        </footer>
     </div>
 </body>
 </html>

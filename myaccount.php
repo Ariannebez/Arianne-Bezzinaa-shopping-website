@@ -1,5 +1,10 @@
 <?php
         include 'includes/header.php';
+        require_once "includes/functions.php";
+        require_once "includes/dbh.php";
+        require_once "includes/db-functions.php";
+        
+        
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,29 +40,44 @@
 <div class="container login-container mt-5 mb-5">
     <div class="row text-center"><h1>Sing Up</h1></div>
     <div class="row"><div class="input-group">
-  <span class="input-group-text">First and last name</span>
-  <input type="text" aria-label="First name" class="form-control">
-  <input type="text" aria-label="Last name" class="form-control">
+    <div class="form-floating mb-3">
+    <input type="input" class="form-control" id="firstName" name="firstName" required>
+    <label for="firstName">First Name</label>
+    </div>
+    <div class="form-floating mb-3">
+    <input type="input" class="form-control" id="lastName" name="lastName" required>
+    <label for="lastName">Last Name</label>
+    </div>
 </div></div>
 
 <!--Adding email and password comfir-->
 <form>
-  <div class="mb-3 mt-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+<!--email-->
+<div class="form-floating mb-3">
+  <input type="email" class="form-control" id="email" name="email" required>
+  <label for="email">Email</label>
   </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
+  <!--password-->
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="password" name="password" required>
+    <label for="password">Password</label>
+    </div>
+    <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="confPassword" name="confPassword" required>
+    <label for="confPassword">Confirm Password</label>
+    </div>
   
-  <button type="submit" class="btn btn-primary">Sing up</button>
+  <!--<button type="submit" class="btn btn-primary">Sing up</button>-->
+
+  <div class="row">
+            <div class="col-12 mb-3">
+                <button type="submit" class="btn btn-success w-100 p-2 fs-5">Sign Up</button>
+            </div>
+            <div class="col-12">
+                <button type="reset" class="btn btn-danger w-100 p-2 fs-5">Reset Form</button>
+            </div>
+      </div>
 </form>
 <!--end-->
 </div>

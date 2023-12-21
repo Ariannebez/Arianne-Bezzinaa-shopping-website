@@ -81,6 +81,10 @@
                     </div>
                         <!--Button`s div closes-->
 
+                        <div class="row">
+                            <div class="col-6"></div>
+                        </div>
+
                     </div>
                 </form>
             </div>
