@@ -29,7 +29,7 @@ if(isset($_POST)){
     }
    
 
-    createApplication($conn, $username, $password, $email, $firstName, $lastName, 
+    createSingup($conn, $username, $password, $email, $firstName, $lastName, 
     $address, $street, $town, $course);
 }
 

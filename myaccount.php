@@ -5,7 +5,7 @@
         require_once "includes/db-functions.php";
         
         
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +82,56 @@
 <!--end-->
 </div>
 
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3"></div>
+
+            <!--if an error show this div-->
+            <?php if(isset($_GET["error"])): ?>
+        
+            <div class="col-6 text-center border border-danger-subtle bg-danger-subtle text-danger p-2">
+            <?php 
+            $error = $_GET["error"];
+            if($error == "stmtfailed"){
+                echo "something went worgn pls connect admin";
+            }
+
+            // "PassworsDoNotMatch" 
+            //Has to be written the same as written in registration-inc.php page
+            elseif($error == "PassworsDoNotMatch"){
+                echo "passwords do not match";
+            }
+            
+            //not vaild username
+            elseif($error == "invalidUsername"){
+                echo "User name invalid";
+            }
+            ?>
+            </div>
+
+            <?php endif; ?>
+
+            <!--if success show this div-->
+            <?php
+            if(isset($_GET["success"])){
+                if($_GET["success"]== true){
+                    ?>
+                    <div class="col-6 text-center border border-success-subtle bg-success-subtle text-success p-2">
+                     Application Registration completed successfully.
+                    </div>
+                    <?php
+                    }
+                }
+            ?>
+
+            
+        
+        <div class="col-3"></div>
+    </div>
 </div>
+</div>
+
+
 
 
 
