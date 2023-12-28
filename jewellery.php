@@ -1,5 +1,8 @@
 <?php
         include 'includes/header.php';
+        require_once "includes/functions.php";
+        require_once "includes/dbh.php";
+        require_once "includes/db-functions.php";
     ?>
     
 <!DOCTYPE html>

@@ -3,7 +3,7 @@
  require_once "dbh.php";
  require_once "db-functions.php";
 
-//Getting info from registration
+//Getting info from my account sing up.
 if(isset($_POST)){
 
     $username = $_POST["username"];
@@ -13,27 +13,32 @@ if(isset($_POST)){
     $firstName = $_POST["firstName"];
     $lastName = $_POST["lastName"];
 
+    $address = $_POST["address"];
+    $street = $_POST["street"];
+    $town = $_POST["town"];
+   
+
     //validation
     $passwordsMatch = passwordsMatch($password, $confPassword);
      // ! means if not 
      //if(!$passwordsMatch);
     if($passwordsMatch == false){
-        header("location: ../index.php?error=PassworsDoNotMatch");
+        header("location: ../myaccount.php?error=PassworsDoNotMatch");
         exit();
     }
 
     $validUsername = validUsername($username);
     if($validUsername == false){
-        header("location: ../index.php?error=invalidUsername");
+        header("location: ../myaccount.php?error=invalidUsername");
         exit();
     }
    
 
-    createSingup($conn, $username, $password, $email, $firstName, $lastName, 
-    $address, $street, $town, $course);
+    createApplication($conn, $username, $password, $email, $firstName, $lastName, 
+    $address, $street, $town);
 }
 
 else{
-    header("location: ../index.php");
+    header("location: ../myaccount.php");
     exit();
 }

@@ -4,7 +4,7 @@
         require_once "includes/dbh.php";
         require_once "includes/db-functions.php";
         
-        
+        $towns = loadTowns($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,50 +36,82 @@
 </form>
     </div>  
 </div>
+
 <!--Sing up area with input fields and buttons-->
-<div class="container login-container mt-5 mb-5">
-    <div class="row text-center"><h1>Sing Up</h1></div>
-    <div class="row"><div class="input-group">
-    <div class="form-floating mb-3">
-    <input type="input" class="form-control" id="firstName" name="firstName" required>
-    <label for="firstName">First Name</label>
-    </div>
-    <div class="form-floating mb-3">
-    <input type="input" class="form-control" id="lastName" name="lastName" required>
-    <label for="lastName">Last Name</label>
-    </div>
-</div></div>
+<div class="container mt-3">
+    <form action="includes/registration-inc.php" method="POST">
+        <!-- Sing Up Form posting info into database using 'POST'-->
+        <div class="row">
+            <div class="col-lg-7 col-md-12">
+                <!-- Sing Up -->
+                <div class="border p-3 mb-3">
+                    <h3>Sing Up</h3>
+                    <div class="form-floating mb-3">
+                        <input type="input" class="form-control" id="username" name="username" required>
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="confPassword" name="confPassword" required>
+                        <label for="confPassword">Confirm Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="input" class="form-control" id="firstName" name="firstName" required>
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="input" class="form-control" id="lastName" name="lastName" required>
+                        <label for="lastName">Last Name</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <!-- Residence -->
+                <div class="border p-3 mb-3">
+                    <h3>Residence</h3>
+                    <div class="form-floating mb-3">
+                        <input type="input" class="form-control" id="address" name="address" required>
+                        <label for="address">Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="input" class="form-control" id="street" name="street" required>
+                        <label for="street">Street</label>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="town" name="town" required>
+                            <option disabled selected>Select a Town</option>
+                            
+                            <?php foreach($towns as $row): ?>
+                            <option value="<?php echo $row["id"];?>">
+                            <?php echo $row["name"]; 
+                            
+                            ?>
 
-<!--Adding email and password comfir-->
-<form>
-<!--email-->
-<div class="form-floating mb-3">
-  <input type="email" class="form-control" id="email" name="email" required>
-  <label for="email">Email</label>
-  </div>
+                            </option>
+                            <?php endforeach;?>
+                            
+                        </select>
+                    </div>
+                </div>
+                
 
-  <!--password-->
-  <div class="form-floating mb-3">
-    <input type="password" class="form-control" id="password" name="password" required>
-    <label for="password">Password</label>
-    </div>
-    <div class="form-floating mb-3">
-    <input type="password" class="form-control" id="confPassword" name="confPassword" required>
-    <label for="confPassword">Confirm Password</label>
-    </div>
-  
-  <!--<button type="submit" class="btn btn-primary">Sing up</button>-->
-
-  <div class="row">
+        <!-- Form Buttons -->
+        <div class="row">
             <div class="col-12 mb-3">
-                <button type="submit" class="btn btn-success w-100 p-2 fs-5">Sign Up</button>
+                <button type="submit" class="btn btn-success w-100 p-2 fs-5">Submit Form</button>
             </div>
             <div class="col-12">
                 <button type="reset" class="btn btn-danger w-100 p-2 fs-5">Reset Form</button>
             </div>
-      </div>
-</form>
-<!--end-->
+        </div>
+    </form>
 </div>
 
 <div class="container mt-5">
@@ -124,12 +156,11 @@
                 }
             ?>
 
-            
-        
-        <div class="col-3"></div>
+<div class="col-3"></div>
     </div>
 </div>
-</div>
+
+    
 
 
 
@@ -141,5 +172,5 @@
 </body>
 </html>
 <?php
-        include 'includes/footer.php';
-    ?>
+include "includes/footer.php";
+?>
