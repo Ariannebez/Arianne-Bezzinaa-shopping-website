@@ -24,3 +24,40 @@ function validUsername($username){
 
     return $result;
 }
+
+
+// empty inputs
+function emptyInputs($inputs) {
+    foreach ($inputs as $input) {
+        if (empty($input)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+//user loging in
+function loginUser($conn, $username, $password){
+    $userExists = userExists($conn, $username);
+
+    if ($userExists === false){
+        header("location: ../myaccount.php?error=incorrectlogin");
+        exit();
+    }
+
+    $hashedPassword = $userExists["password"];
+    $checkPassword = password_verify($password, $hashedPassword);
+
+    if ($checkPassword === false){
+        header("location: ../myaccount.php?error=incorrectlogin");
+        exit();
+    }
+    else if ($checkPassword === true){
+        session_start();
+        $_SESSION["username"] = $userExists["username"];
+
+        header("location: ../profile.php");
+        exit();
+    }
+}

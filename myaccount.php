@@ -5,6 +5,8 @@
         require_once "includes/db-functions.php";
         
         $towns = loadTowns($conn);
+        $status = loadStatus($conn);
+        
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,27 +20,35 @@
     <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
-<div class="container login-container mt-5 ">
+<div class="login-container container">
     <div class="row mt-5 text-center"><h1>Log in</h1></div>
-    <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
+    
+    <form action="includes/login-inc.php" method="post">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="input-username" class="form-label">Username:</label>
+                    <input type="text" name="username" id="input-username" class="form-control">
+                </div>
 
-  <a href="profile.php" class="btn btn-primary">Log In</a>
-  
+                <div class="mb-3">
+                    <label for="input-password" class="form-label">Password:</label>
+                    <input type="password" name="password" id="input-password" class="form-control">
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" name="submit" class="btn btn-primary">Log In</button>    
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
-    </div>  
+ </div>  
 </div>
 
 <!--Sing up area with input fields and buttons-->
-<div class="container mt-3">
+<div class="container mt-5">
     <form action="includes/registration-inc.php" method="POST">
         <!-- Sing Up Form posting info into database using 'POST'-->
         <div class="row">
@@ -100,6 +110,29 @@
                         </select>
                     </div>
                 </div>
+
+        <!-- Status Selection -->
+        <div class="border p-3 mb-3">
+                    <h3>Status</h3>
+                    <div class="mb-3">
+                        <select class="form-select" id="status" name="status" required>
+                            <option disabled selected>Select a Status</option>
+                            
+                            <?php foreach($status as $row): ?>
+                            <option value="<?php echo $row["id"];?>">
+                            <?php echo $row["name"]; 
+                            
+                            ?>
+
+                            </option>
+                            <?php endforeach;?>
+                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
                 
 
         <!-- Form Buttons -->

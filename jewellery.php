@@ -3,6 +3,8 @@
         require_once "includes/functions.php";
         require_once "includes/dbh.php";
         require_once "includes/db-functions.php";
+
+        $jewellery = loadAllJewellery($conn);
     ?>
     
 <!DOCTYPE html>
@@ -26,6 +28,29 @@
  </div> 
 
  <!--Cards-->
+ <div class="container mt-3">
+    <div class="row">
+        <?php 
+            foreach($jewellery as $jew):
+                ?>
+                <div class="col">
+                    <div class="card">
+                        <img src="" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $jew["name"]?></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><?php echo $jew["price"];?></h6>
+                            
+                            <a href="jewelleryset.php?application=<?php echo $jew["id"] ;?>" class="card-link">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            endforeach;
+        ?>
+    </div>
+</div>
+
+<!--old cards-->
  <div class="container mt-5 ">
     <div class="row justify-content-center">
         <div class="col-auto">
