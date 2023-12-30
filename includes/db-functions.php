@@ -42,10 +42,10 @@ function loadStatus($conn){
 //createApplication function to insert into application on the database
 //the applications are users signing up for the 1st time
 function createApplication($conn, $username, $password, $email, $firstName, $lastName, 
-$address, $street, $town){
+$address, $street, $town, $statusId){
 
     $sql = "INSERT INTO application (username, password, email, firstName, lastName,
-    address, street, town, applicationDate) VALUES (?,?,?,?,?,?,?,?,?); ";
+    address, street, town, statusId, applicationDate) VALUES (?,?,?,?,?,?,?,?,?,?); ";
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
@@ -59,8 +59,8 @@ $address, $street, $town){
     //Hashed password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssssssss", $username, $hashedPassword, $email, 
-    $firstName, $lastName, $address, $street, $town, $applicationDate);
+    mysqli_stmt_bind_param($stmt, "ssssssssss", $username, $hashedPassword, $email, 
+    $firstName, $lastName, $address, $street, $town, $statusId, $applicationDate);
 
     mysqli_stmt_execute($stmt);
     //closing conecting
