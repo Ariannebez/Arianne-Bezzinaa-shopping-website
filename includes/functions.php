@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/dbh.php';
 
 // checking if the 2 password match
 function passwordsMatch($password, $confPassword){
