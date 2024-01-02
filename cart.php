@@ -1,105 +1,144 @@
-<?php
-        include 'includes/header.php';
-        require_once "includes/functions.php";
-        require_once "includes/dbh.php";
-        require_once "includes/db-functions.php";
-    ?>
- <!DOCTYPE html>
- <html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="includes/style.css">
- </head>
- <body>
+<?php 
+require_once 'includes/functions.php';
+require_once 'includes/dbfunctions.php';
+
+if(!isset($_SESSION['USER'])) {
+  header("Location: index.php");
+}
+
+// Fetching the user's details.
+$user = GetUserByID($con, $_SESSION['USER']['id']);
+$address = GetAddressesByUser($con, $user['id']);
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if(isset($_POST['removeItem'])) {
+    foreach($_SESSION['CART_ITEMS'] as $key => $itm) {
+        if ($itm['id'] == $_POST['prodid']) {
+            unset($_SESSION['CART_ITEMS'][$key]);
+        }
+    }
+  } else if (isset($_POST['updateProduct'])) {
+    foreach($_SESSION['CART_ITEMS'] as $key => $itm) {
+      if ($itm['id'] == $_POST['prodid']) {
+          if($itm['stockQty'] >= (int)$_POST['quantity']) {
+            $_SESSION['CART_ITEMS'][$key]['quantity'] = (int)$_POST['quantity'];
+          }
+      }
+    }
+  } else if(isset($_POST['clearCart'])) {
+    unset($_SESSION['CART_ITEMS']);
+  } else if(isset($_POST['confirmOrder'])) {
+      $cartItems = $_SESSION['CART_ITEMS'];
+      $result = createOrder($con, $user, $address, $cartItems);
+      if($result) {
+          unset($_SESSION["CART_ITEMS"]);
+          header("location: orderConfirmed.php?orderno=$result");
+      }
+  }
+}
+
+$cartItems = null; // Cart items.
+$total = 0; // Total cost including delivery.
+
+// Calculate totals if there are items in the cart.
+if(isset($_SESSION['CART_ITEMS'])) {
+  $cartItems = $_SESSION['CART_ITEMS']; // Load items from session.
+  // Calculate subtotal from item prices and quantities.
+  foreach($cartItems as $key => $item) {
+    $total += $item['price'] * $item['quantity'];
+  }
+
+}
+
+
+
+require_once 'includes/header.php';
+require_once 'includes/navbar.php';
+?>
+
 <div class="container">
 
-<div class="row mt-3"></div>
-<div class="card mb-3 w-100" style="">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img class="imgdiv" src="https://www.exclusivecreations.com.mt/statementjewellery/wp-content/uploads/2020/06/IMG_1096.jpg" class="img-fluid rounded-start" alt="...">
+<?php if(isset($cartItems) && !empty($cartItems)) : ?>
+  <?php foreach($cartItems as $item) : ?>
+  <form method="POST">
+  <div class="row mt-3"></div>
+  <div class="card mb-3 w-100" style="">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img class="imgdiv"
+          src="<?php echo $item['image']; ?>"
+          class="img-fluid rounded-start" alt="...">
+      </div>
+      
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><?php echo $item['name']; ?></h5>
+            <p class="card-text"><?php echo $item['title']; ?></p>
+            <p class="card-text"><small class="text-body-secondary">
+                <h1>&euro; <?php echo number_format($item['price'], 2); ?></h1>
+              </small></p>
+              <label for="quantity">Quantity:</label>
+              <input type="number" id="quantity" name="quantity" min="1" max="15" value="<?php echo $item['quantity']; ?>">
+              <input type="hidden" name="prodid" value="<?php echo $item['id']; ?>">
+            <button class="btn btn-primary" name="updateProduct">
+              Update
+            </button>
+            <button class="btn btn-primary" name="removeItem">Remove</button>
+            <!--end of buttons-->
+          </div>
+        </div>
+      
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Necklace</h5>
-        <p class="card-text">Gold plated necklace</p>
-        <p class="card-text"><small class="text-body-secondary"><h1>&euro; 30</h1></small></p>
+  </div>
+  </form>
+  <?php endforeach; ?>
+  
+
+  <div class="row">
+    <div class="card cardCheckOut mb-3">
+      <div class="card-header">
+        Checkout
+      </div>
+      <div class="card-body h-100">
+        <p class="card-text">Your total is &euro; <?php echo number_format($total, 2) ?></p>
+        <h5 class="card-title">Order Details:</h5>
+        <form method="POST">
+        <label>Name:</label>
+        <label><?php echo $user['firstName'] ?></label>
+        <br>
+        <label>Surname:</label>
+        <label><?php echo $user['lastName'] ?></label>
+        <br>
+        <label>Address:</label>
+        <label><?php echo $address['street'] ?></label>
+        <br>
+        <label>City:</label>
+        <label><?php echo $address['city'] ?></label>
+        <br>
+        <label>ZipCode:</label>
+        <label><?php echo $address['zipCode'] ?></label>
+        <br>
+        <label>Region:</label>
+        <label><?php echo $address['region'] ?></label>
+        <br>
+        <label>Mobile No:</label>
+        <label><?php echo $user['mobile'] ?></label>
+        <br>
+          <button name="confirmOrder" class="btn btn-primary">Confirm Order</button> or 
         
-        <!--buttons-->
-        <form action="/action_page.php">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" max="15">
+          <button name="clearCart" class="btn btn-primary">Clear Cart</button>
         </form>
-
-        <a class="btn btn-primary" href="">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
-        </a>
-        <a href="cart.php" class="btn btn-primary">Remove</a>
-        <!--end of buttons-->
-    </div>
+      </div>
     </div>
   </div>
+  <?php else : ?>
+    <h2>You have no items in your shopping cart</h2>
+  <?php endif; ?>
 </div>
 
 
-<!--2 nd card-->
-<div class="row mt-3"></div>
-<div class="card mb-3 w-100" style="">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img class="imgdiv" src="https://bycharlotte.com.au/cdn/shop/files/14k-2_385x.jpg?v=1680239002" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Necklace</h5>
-        <p class="card-text">Gold plated necklace</p>
-        <p class="card-text"><small class="text-body-secondary"><h1>&euro; 30</h1></small></p>
-        
-        <!--buttons-->
-        <form action="/action_page.php">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1" max="15">
-        </form>
-
-        <a class="btn btn-primary" href="">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
-        </a>
-        <a href="cart.php" class="btn btn-primary">Remove</a>
-        <!--end of buttons-->
-    </div>
-    </div>
-  </div>
-</div>
-
-<!--2 nd card end-->
-
-<div class="row">
-<div class="card cardbs mb-3">
-  <div class="card-header">
-   Payment
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Procced to payment</h5>
-    <p class="card-text">Your total is &euro; 60</p>
-    <a href="payment.php" class="btn btn-primary">Pay</a> or <a href="#" class="btn btn-primary">Cancel Order</a>
-  </div>
-</div>
-</div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
- </body>
- </html>   
-
-    <?php
-        include 'includes/footer.php';
-    ?>
+<?php
+  include 'includes/footer.php';
+?>
     
     
