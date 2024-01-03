@@ -5,6 +5,24 @@
       require_once 'includes/functions.php';
       require_once 'includes/dbfunctions.php';
 
+      //Loading product from database
+      $products = getProducts($con);
+
+      // Delete product
+    if (isset($_GET['delete'])) {
+        $productId = $_GET['delete'];
+
+        if (deleteProduct($con, $productId)) {
+            // Success message
+            $message = "Product Deleted Successfully";
+        } else {
+            // Error message
+            $message = "Error Deleting Product";
+        }
+    }
+
+
+    // Adding new product
       if (isset($_POST['add_product'])) {
             
         
@@ -66,6 +84,41 @@
 
                 <button type="submit" class="btn btn-primary" name="add_product">Add Product</button>
             </form>
+        </div>
+    </div>
+</div>       
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col col-md-6">
+        <h1>Products In Shop</h1>
+        <?php foreach ($products as $product) : ?>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="<?php echo $product['img']; ?>" class="img-fluid rounded-start" alt="<?php echo $product['name']; ?>">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $product['name']; ?></h5>
+                    <p class="card-text"><?php echo $product['description']; ?></p>
+                    <p class="card-text"><small class="text-muted">Price: &euro;<?php echo $product['price']; ?></small></p>
+                    <p class="card-text"><small class="text-muted">Stock Qty: <?php echo $product['stockQty']; ?></small></p>
+                    <!--BTN edit or delete-->
+                    <a href="edit-product.php?id=<?php echo $product['id']; ?>" class="btn btn-primary">Edit</a>
+                    
+                    <form action="product-management.php" method="GET">
+                    <input type="hidden" name="delete" value="<?php echo $product['id']; ?>">
+                    <button class="btn btn-danger mt-3" type="submit">Delete</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
         </div>
     </div>
 </div>

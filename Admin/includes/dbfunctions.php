@@ -65,10 +65,10 @@ function createUser($con, $user) {
         exit();
     }
 
-    // Bind parameters to the SQL statement
+    // Attaching the parameters to the SQL query.
     mysqli_stmt_bind_param($stmt, "sssss", $userEmail, $userName, $userSurname, $userPassword, $userContactNumber);
 
-    // Execute the statement and check for errors
+    // Runing the statement and make sure there are no errors.
     if (!mysqli_stmt_execute($stmt)) {
         echo "Error executing statement: " . mysqli_error($con);
         exit();
@@ -88,13 +88,8 @@ function createAddress($con, $userID, $addressData) {
         return false;
     }
 
-    // Other fields should also be checked similarly
-    // ...
 
-    // Rest of your existing code for checking user and inserting address
-    // ...
-
-    // Bind parameters
+    
     mysqli_stmt_bind_param($stmt, 'ssssisi', 
         $addressData['street'], 
         $addressData['city'], 
@@ -114,74 +109,6 @@ function createAddress($con, $userID, $addressData) {
     $result = mysqli_stmt_insert_id($stmt);
     mysqli_stmt_close($stmt);
     return $result;
-}
-
-
-
-function GetCategories($con)
-{
-    $sql = "SELECT * FROM category";
-
-    $stmt = mysqli_stmt_init($con);
-    if(!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "Could not load Categories";
-        exit();
-    }
-
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
-}
-
-function GetProducts($con, $category, $search)
-{
-    $sql = "SELECT p.*, c.name as 'categoryName' FROM product p JOIN category c ON p.categoryid = c.id";
-
-    if(isset($category)) {
-        $sql .= " AND c.id = $category";
-    } else if(isset($search)) {
-        $sql .= " AND p.name LIKE '%$search%'";
-    }
-
-    $stmt = mysqli_stmt_init($con);
-    if(!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "Could not load Products";
-        exit();
-    }
-
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-
-    mysqli_stmt_close($stmt);
-
-    return $result;
-}
-
-function GetProductByID($con, $id)
-{
-    $sql = "SELECT p.*, c.name as 'categoryName', c.id as 'categoryID' FROM product p JOIN category c ON p.categoryid = c.id WHERE p.id = '$id'";
-
-    $stmt = mysqli_stmt_init($con);
-    if(!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "Could not load Products";
-        exit();
-    }
-
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-
-    mysqli_stmt_close($stmt);
-
-    if(mysqli_num_rows($result) > 0) {
-
-        return $result->fetch_assoc(); //Memory location, this saves session's data 
-    }
-
-    return false;
-
 }
 
 // Adding user and userAdmin using union all
@@ -214,7 +141,7 @@ function getAllUsersAndAdmins($con) {
 }
 
 
-//Delete 
+//Delete user from database
 function deleteUser($con, $userId) {
     // Start transaction
     mysqli_begin_transaction($con);
@@ -284,6 +211,41 @@ function addProduct($con, $name, $title, $description, $category, $price, $stock
         return mysqli_stmt_affected_rows($stmt) > 0;
     }
 }
+
+
+function getProducts($con) {
+    $products = [];
+    $sql = "SELECT * FROM product"; 
+    $result = mysqli_query($con, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($products, $row);
+        }
+    }
+
+    return $products;
+}
+
+// Delete product
+function deleteProduct($con, $productId) {
+    $sql = "DELETE FROM product WHERE id = ?";
+    $stmt = mysqli_prepare($con, $sql);
+
+    if (!$stmt) {
+        // Handle error - could not prepare the statement
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, 'i', $productId);
+    $result = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+
+
 
 
 
