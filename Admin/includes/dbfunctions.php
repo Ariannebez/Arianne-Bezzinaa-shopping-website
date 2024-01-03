@@ -266,62 +266,21 @@ function deleteUser($con, $userId) {
 
 
 //Add peoduct 
-function addProduct($con, $name, $title, $description, $category, $price, $stockQty, $image) {
-    // Input validation and sanitization
-    $name = htmlspecialchars(strip_tags($name));
-    $title = htmlspecialchars(strip_tags($title));
-    $description = htmlspecialchars(strip_tags($description));
-    $category = intval($category); // Assuming category is an integer ID
-    $price = floatval($price);
-    $stockQty = intval($stockQty);
-
-    // Handle image upload (adjust according to your needs)
-    $target_dir = "../uploads/";
-    $target_file = $target_dir . basename($image["name"]);
-    $uploadOk = 1;
-
-    // Check if file is an actual image or fake image
-    $check = getimagesize($image["tmp_name"]);
-    if($check !== false) {
-        $uploadOk = 1;
+function addProduct($con, $name, $title, $description, $category, $price, $stockQty, $img) {
+    // SQL query with placeholders
+    $sql = "INSERT INTO product (name, title, description, categoryid, price, stockQty, img) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    
+    // Prepare the SQL statement
+    $stmt = mysqli_stmt_init($con);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "SQL statement failed";
+        exit();
     } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+        mysqli_stmt_bind_param($stmt, "sssisdi", $name, $title, $description, $category, $price, $stockQty, $img);
+        mysqli_stmt_execute($stmt);
+        return mysqli_stmt_affected_rows($stmt) > 0;
     }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        return false; // Exit function
-    } else {
-        if (move_uploaded_file($image["tmp_name"], $target_file)) {
-            echo "The file ". htmlspecialchars(basename($image["name"])). " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-            return false; // Exit function
-        }
-    }
-
-    // SQL query to insert product
-    try {
-        $stmt = $con->prepare("INSERT INTO product (name, title, description, categoryid, price, stockQty, img) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        if ($stmt === false) {
-            throw new Exception($con->error);
-        }
-
-        $stmt->bind_param("sssids", $name, $title, $description, $category, $price, $stockQty, $target_file);
-        if (!$stmt->execute()) {
-            throw new Exception($stmt->error);
-        }
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-        // Optionally, log this error to a file
-        return false;
-    }
-
-    return true;
 }
-
 
 
 

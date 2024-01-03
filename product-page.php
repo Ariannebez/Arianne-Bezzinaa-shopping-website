@@ -52,7 +52,7 @@ require_once 'includes/navbar.php';
 
                     <form action="/action_page.php">
                         <label for="quantity" class="my-4">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="15" value="69">
+                        <input type="number" id="quantity" name="quantity" min="1" max="15" value="0">
                     </form>
                     <?php if($isLoggedIn) : ?>
                     <div class="row">
