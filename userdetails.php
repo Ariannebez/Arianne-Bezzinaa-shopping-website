@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         else {
             $incorrectPassword = "Current password is incorrect";
         }
-        // Update user object if there's no error.
+        // Update user, if there's no error.
         if(empty($incorrectPassword)) {
             updateUserPassword($con, $user);
         }
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
-// Fetching the user's details.
+//Getting the user's details.
 
 $address = GetAddressesByUser($con, $_SESSION['USER']['id']);
 

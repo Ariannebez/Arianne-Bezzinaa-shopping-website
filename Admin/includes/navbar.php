@@ -1,6 +1,6 @@
-<!--Navigation Bar -->
+<!--Nav Bar -->
 <div class="container-fluid">
-    <!-- Row 1: Navigation Bar -->
+    <!-- Bar -->
     <div class="row">
       <nav class="navbar navbar-expand-md navbar-light bg-light col-12">
         <a class="navbar-brand" href="#">Admin page</a>

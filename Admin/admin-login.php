@@ -191,4 +191,11 @@ if(!empty($error)): ?>
                 <button type="reset" class="btn btn-danger w-100 p-2 fs-5">Reset Form</button>
             </div>
 
+
+
+
+
+
+
+
 <?php require_once 'includes/footer.php'; ?>

@@ -82,29 +82,31 @@ function createUser($con, $user) {
 
 
 function createAddress($con, $userID, $addressData) {
-    // First, check if the user exists
-    $userCheckSql = "SELECT id FROM user WHERE id = ?";
-    $stmt = mysqli_prepare($con, $userCheckSql);
-    mysqli_stmt_bind_param($stmt, 'i', $userID);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-
-    if (mysqli_stmt_num_rows($stmt) == 0) {
-        // User does not exist, handle error
-        echo "User with ID $userID does not exist.";
+    // Check if 'street' is provided
+    if (!isset($addressData['street']) || $addressData['street'] === null) {
+        echo "Street address is required.";
         return false;
     }
-    mysqli_stmt_close($stmt);
 
-    // User exists, proceed with address insertion
-    $addressInsertSql = "INSERT INTO address (street, city, zipCode, region, userid, def, mobile) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($con, $addressInsertSql);
+    // Other fields should also be checked similarly
+    // ...
 
-    // Assuming $addressData is an associative array with keys matching the column names
-    mysqli_stmt_bind_param($stmt, 'ssssisi', $addressData['street'], $addressData['city'], $addressData['zipCode'], $addressData['region'], $userID, $addressData['def'], $addressData['mobile']);
-    
+    // Rest of your existing code for checking user and inserting address
+    // ...
+
+    // Bind parameters
+    mysqli_stmt_bind_param($stmt, 'ssssisi', 
+        $addressData['street'], 
+        $addressData['city'], 
+        $addressData['zipCode'], 
+        $addressData['region'], 
+        $userID, 
+        $addressData['def'], 
+        $addressData['mobile']
+    );
+
+    // Execute statement and handle the result
     if (!mysqli_stmt_execute($stmt)) {
-        // Handle insertion error
         echo "Error inserting address: " . mysqli_error($con);
         return false;
     }
@@ -113,6 +115,7 @@ function createAddress($con, $userID, $addressData) {
     mysqli_stmt_close($stmt);
     return $result;
 }
+
 
 
 function GetCategories($con)

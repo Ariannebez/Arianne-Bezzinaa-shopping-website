@@ -81,7 +81,7 @@ require_once 'includes/navbar.php';
 
 <div class="container mt-5 mb-5 ">
 
-  <!--cards for items in wish  list-->
+  <!--cards for items in wish list-->
   <?php for($i = 0; $i < $productGroups; $i++): ?>
   <div class="card-group">
     <?php 
