@@ -13,13 +13,9 @@ if (isset($_GET['search'])) {
 
 $products = GetProducts($con, $category, $search);
 
-
+require_once 'includes/header.php';
+require_once 'includes/navbar.php';
 ?>
-
-<?php
-        require_once 'includes/header.php';
-        require_once 'includes/navbar.php';
-    ?>
 
 <div class="container">
     <div class="row justify-content-center mt-5 ">
@@ -29,7 +25,7 @@ $products = GetProducts($con, $category, $search);
 
 
 <!--old cards-->
-<div class="container ">
+<div class="container my-4 ">
     <div class="row justify-content-center">
         <?php foreach ($products as $product): ?>
         <div class="col-4 mb-5">
@@ -50,6 +46,6 @@ $products = GetProducts($con, $category, $search);
 
 
 <?php
-        include 'includes/footer.php';
-    ?>
+    include 'includes/footer.php';
+?>
     

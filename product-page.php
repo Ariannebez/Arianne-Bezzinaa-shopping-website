@@ -3,6 +3,7 @@ require_once 'includes/functions.php';
 require_once 'includes/dbfunctions.php';
 
 $isLoggedIn = false;
+$error = null;
 
 if (isset($_GET['id'])) {
     $product = GetProductByID($con, $_GET['id']);
@@ -16,7 +17,49 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     } else if(isset($_POST["removeFromWishlist"])) {
         deleteWishlistItem($con, $_GET["id"], $_SESSION["USER"]["id"]);
     } else if (isset($_POST["addToCart"])) {
-        
+        $newQuantity = (int) $_POST["quantity"];
+        $cartItems = [];
+        $existingProd = null;
+        $updated = false;
+        // Check if there are existing cart items in the session.
+        if(isset($_SESSION['CART_ITEMS'])) {
+            $cartItems = $_SESSION['CART_ITEMS'];
+        }
+        // Loop through cart items to check if the product is already added.
+        if(!empty($cartItems)) {
+            foreach($cartItems as $key => $value) {
+                // If product is found, increase the quantity.
+                if($cartItems[$key]['id'] == $product['id']) {
+                    $newQuantity = $cartItems[$key]['stockQty'] + $newQuantity;
+                    // Ensure the new quantity does not exceed stock.
+                    if($newQuantity <= $product['stockQty']) {
+                        $cartItems[$key]['quantity'] = $newQuantity;
+                        $_SESSION['CART_ITEMS'] = $cartItems;
+                    } else {
+                        $error = 'We do not have that amount in stock, please reduce the quantity.';
+                    }
+                    $updated = true;
+                    break;
+                }
+            }
+        }
+        // If the product is not already in the cart, add it.
+        if(!$updated) {
+            if($product['stockQty'] >= $newQuantity) {
+                $prodToAdd["id"] = $product["id"];
+                $prodToAdd["name"] = $product["name"];
+                $prodToAdd["title"] = $product["title"];
+                $prodToAdd["price"] = $product["price"];
+                $prodToAdd["image"] = $product["img"];
+                $prodToAdd["stockQty"] = $product["stockQty"];
+                $prodToAdd["quantity"] = $newQuantity;
+                array_push($cartItems, $prodToAdd);
+
+                $_SESSION['CART_ITEMS'] = $cartItems;
+            } else {
+                $error = 'We do not have that amount in stock, please reduce the quantity.';
+            }
+        }
     }
 }
 
@@ -49,15 +92,14 @@ require_once 'includes/navbar.php';
                         <?php echo $product['description']; ?>
                     </p>
                     <h2>&euro; <?php echo $product['price']; ?></h2>
-
-                    <form action="/action_page.php">
-                        <label for="quantity" class="my-4">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="15" value="0">
-                    </form>
                     <?php if($isLoggedIn) : ?>
+                    <form method="POST">
+                    <label for="quantity" class="my-4">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="99" value="0">
+                    
                     <div class="row">
                         <div class="col">
-                            <form method="POST">
+                            
                                 <?php if(!$isInWishlist) : ?>
                                     <button class="btn btn-primary" type="submit" name="addToWishlist">
                                         <ion-icon name="heart-outline"></ion-icon>
@@ -67,16 +109,21 @@ require_once 'includes/navbar.php';
                                         <ion-icon name="heart"></ion-icon>
                                     </button>
                                 <?php endif; ?>
-                            </form>
-                            <?php if($product["Stock"] > 0) : ?>
-                                <form method="POST">
+                            
+                            <?php if($product["stockQty"] > 0) : ?>
+                                
                                     <button name="addToCart" type="submit" class="btn btn-primary">ADD TO CART</button>
-                                </form>
+                                
                             <?php else: ?>
                                 <button class="btn btn-primary" disabled>Out of stock</button>
                             <?php endif; ?>
+                            <?php if(!empty($error)) : ?>
+                                <h4 class="my-2 text-danger"><?php echo $error; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
+                    
+                    </form>
                     <?php endif; ?>
                 </div>
             </div>
@@ -89,6 +136,16 @@ require_once 'includes/navbar.php';
                         alt="...">
                     <div class="card-body">
                         <p class="card-text">Leather Bag</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+        include 'includes/footer.php';
+    ?>
                     </div>
                 </div>
             </div>
