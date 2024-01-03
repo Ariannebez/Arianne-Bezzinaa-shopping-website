@@ -1,4 +1,4 @@
-<footer class="container-fluid bg-custom">
+<footer class="container-fluid bg-custom fixed-bottom">
         <!-- Copyright Section -->
         <div class="row p-2">
             <div class="col text-white">

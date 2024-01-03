@@ -67,12 +67,12 @@ require_once 'includes/dbfunctions.php';
 
 <!--Cards-->
 
-<div class="container my-4">
+<div class="container my-4 ">
 
     <div class="row justify-content-center">
         <?php foreach ($getCategories as $category):
             ?>
-        <div class="col">
+        <div class="col-md-auto">
             <div class="card mb-5" style="width: 18rem;">
                 <img src="<?php echo $category['image']; ?>" class="card-img-top" alt="...">
                 <div class="card-body">

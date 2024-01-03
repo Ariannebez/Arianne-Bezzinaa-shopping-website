@@ -52,13 +52,13 @@ function createUser($con, $user) {
     $userName = $user["Name"];
     $userSurname = $user["Surname"];
     $userEmail = $user["Email"];
-    $userPassword = $user["Password"]; // Consider hashing the password before storing it
+    $userPassword = $user["Password"]; 
     $userContactNumber = $user["ContactNumber"];
 
     // SQL query with placeholders
     $sql = "INSERT INTO userAdmin (email, firstName, lastName, joined, password, mobile, role) VALUES (?, ?, ?, NOW(), ?, ?, 2);";
     
-    // Prepare the SQL statement
+    
     $stmt = mysqli_stmt_init($con);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         echo "SQL statement failed";
@@ -243,6 +243,34 @@ function deleteProduct($con, $productId) {
 
     return $result;
 }
+
+
+//Displaying category
+function getCategories($con) {
+    $categories = array();
+
+    // SQL query to select id, name, and image from the category table
+    $sql = "SELECT id, name, image FROM category";
+
+    // Execute the query
+    $result = mysqli_query($con, $sql);
+
+    // Check if the query was successful
+    if ($result) {
+        // Fetch all rows as an associative array
+        while($row = mysqli_fetch_assoc($result)) {
+            $categories[] = $row;
+        }
+    } else {
+        // Optional: Handle error scenario
+        // echo "Error: " . mysqli_error($con);
+    }
+
+    return $categories;
+}
+
+
+
 
 
 

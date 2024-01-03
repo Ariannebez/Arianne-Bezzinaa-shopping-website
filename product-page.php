@@ -128,31 +128,9 @@ require_once 'includes/navbar.php';
                 </div>
             </div>
 
-            <!--recommend card -->
-            <div class="col my-5">
-                <h6>Recommend <span style="font-size:30px; font-weight:800;"></span> for you</h6>
-                <div class="card mt-1" style="width: 12rem;">
-                    <img src="https://ae01.alicdn.com/kf/Sbf39a20a7930445784719142cbbe8228J/Quality-Soft-Leather-Shopper-Bags-for-Women-2022-New-Designer-Handbag-Set-Black-Simple-Female-Shoulder.jpg"
-                        alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Leather Bag</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+           
 
 <?php
         include 'includes/footer.php';
     ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-        include 'includes/footer.php';
-    ?>
+             

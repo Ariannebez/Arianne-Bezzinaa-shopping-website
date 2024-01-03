@@ -19,11 +19,14 @@
             // Error message
             $message = "Error Deleting Product";
         }
+
+        header('Location: product-management.php');
+        exit();
     }
 
 
     // Adding new product
-      if (isset($_POST['add_product'])) {
+    if (isset($_POST['add_product'])) {
             
         
             // Call the function and pass the form data and file
@@ -35,6 +38,9 @@
             } else {
                 echo "Error adding product.";
             }
+
+            header('Location: product-management.php');
+            exit();
         }
         
 
@@ -44,7 +50,8 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-8 offset-md-2"> <!-- Adjust column sizes as needed -->
+        <div class="col-md-8 offset-md-2"> 
+            <h1>Add New Product</h1>
             <form action="product-management.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -62,7 +69,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="category">Category:</label>
+                    <label for="category">Category: Enter category number - 1 if your product is jewellery, 2 for bags and 3 for cermics</label>
                     <input type="text" class="form-control" id="category" name="category" required>
                 </div>
 
@@ -77,7 +84,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image">Image:</label>
+                    <label for="image">Image: Enter link</label>
                     <input type="text" class="form-control" id="image" name="image" required>
 
                 </div>
@@ -93,7 +100,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col col-md-6">
-        <h1>Products In Shop</h1>
+        <h1>Products Available In Shop</h1>
         <?php foreach ($products as $product) : ?>
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
