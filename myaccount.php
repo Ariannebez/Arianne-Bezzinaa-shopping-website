@@ -6,7 +6,6 @@ $userExists = false;
 $userCreated = false;
 $error = null;
 
-// functtions
 // Checking the request method to handle form submissions
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     // Login form submitted
@@ -15,19 +14,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $email = htmlspecialchars(addslashes($_POST['email'])); 
         $password = htmlspecialchars(addslashes($_POST['password']));
 
-        // Attempting to login the user
+        // Attemptting to login the user
         if(userLogin($con, $email, $password)) {
             // Redirect to profile page upon successful login
             header("Location: profile.php"); 
         }
         else
         {
-            // Seting error message for incorrect credentials
+            // Setting error message for incorrect credentials
             $error = "Incorrect email or password, try again!";
         }
         // Account creation form submitted
     } else if (isset($_POST["signupEmail"])) {
-        // Sanitize and store input values
+        // Keeping input values clean and stored.
         $user = [];
         $user['Name'] = htmlspecialchars(addslashes($_POST['firstName']));
         $user['Surname'] = htmlspecialchars(addslashes($_POST['lastName']));
@@ -37,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $user['ContactNumber'] = htmlspecialchars(addslashes($_POST['mobile']));
 
         
-        // Checking if thevuser already exists
+        // Checking if user already exists
         if(!CheckUserExists($con, $user['Email'])) {
             // Create a new user
             $user['ID'] = createUser($con, $user);
@@ -55,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
         else{
-            // If user already exists, set userExists to true
+            // If user already exists, setting userExists to true
             $userExists = true;
         }
     }
@@ -77,7 +76,7 @@ if(!empty($error)): ?>
 </div>
 
 <?php elseif($userExists) : ?>
-<!-- Display message if user already exists -->
+<!-- Displaying message if user already exists -->
 <div class="container text-center mt-4 text-danger">
     <p>User Already Exists!</p>
 </div>
@@ -146,7 +145,7 @@ if(!empty($error)): ?>
                 </div>
             </div>
             <div class="col-lg-5 col-md-12">
-                <!-- Residence -->
+                <!-- Residence Of User (client)-->
                 <div class="border p-3 mb-3">
                     <h3>Residence</h3>
                     <div class="form-floating mb-3">
@@ -175,10 +174,10 @@ if(!empty($error)): ?>
         <!-- Form Buttons -->
         <div class="row">
             <div class="col-12 mb-3">
-                <button type="submit" class="btn btn-success w-100 p-2 fs-5">Submit Form</button>
+                <button type="submit" class="btn btn-primary w-100 p-2 fs-5">Submit Form</button>
             </div>
             <div class="col-12 mb-4">
-                <button type="reset" class="btn btn-danger w-100 p-2 fs-5">Reset Form</button>
+                <button type="reset" class="btn btn-primary w-100 p-2 fs-5">Reset Form</button>
             </div>
         </div>
     </form>
@@ -187,4 +186,3 @@ if(!empty($error)): ?>
 <?php
         include 'includes/footer.php';
     ?>
-?>
