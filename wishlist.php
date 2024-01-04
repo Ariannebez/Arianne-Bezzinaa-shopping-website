@@ -79,7 +79,7 @@ require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 ?>
 
-<div class="container mt-5 mb-5 ">
+<div class="container mt-5 mb-5 pb-5">
 
   <!--cards for items in wish list-->
   <?php for($i = 0; $i < $productGroups; $i++): ?>
@@ -91,7 +91,7 @@ require_once 'includes/navbar.php';
       }
     ?>
     <?php for($j = $i*3; $j < $limit; $j++): ?>
-    <div class="card me-3">
+    <div class="card me-3 ">
       <img
         src="<?php echo $wishlistProducts[$j]['img'] ?>"
         class="card-img-top" alt="...">

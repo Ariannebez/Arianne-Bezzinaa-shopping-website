@@ -78,7 +78,7 @@ require_once 'includes/navbar.php';
     <!--row closes -->
 </div>
 <div class="container">
-    <div class="row mt-5 mb-5">
+    <div class="row mt-5 mb-5 pb-5">
         <div class="card ">
             <div class="card-body">
                 <h5 class="card-title">

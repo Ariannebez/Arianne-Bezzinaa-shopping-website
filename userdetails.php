@@ -65,7 +65,7 @@ require_once 'includes/navbar.php';
 
 <div class="container">
 
-    <div class="row mt-5">
+    <div class="row mt-5 mb-5 pb-5">
         <div class="row">
             <h1>My Account</h1>
         </div>

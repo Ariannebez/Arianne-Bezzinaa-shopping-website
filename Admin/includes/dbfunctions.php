@@ -206,7 +206,7 @@ function addProduct($con, $name, $title, $description, $category, $price, $stock
         echo "SQL statement failed";
         exit();
     } else {
-        mysqli_stmt_bind_param($stmt, "sssisdi", $name, $title, $description, $category, $price, $stockQty, $img);
+        mysqli_stmt_bind_param($stmt, "sssisds", $name, $title, $description, $category, $price, $stockQty, $img);
         mysqli_stmt_execute($stmt);
         return mysqli_stmt_affected_rows($stmt) > 0;
     }

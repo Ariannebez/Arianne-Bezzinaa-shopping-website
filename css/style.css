@@ -20,9 +20,16 @@ h1, h2, h3, h4, h5, h6, p{
     color: #1f4172;
 }
 
-button.btn-primary:hover {
-    background-color: #337ab7;
-    border-color: #2e6da4;
+.btn{
+    color: #ffff;
+    background-color:  #1f4172;
+    
+}
+
+.btn-primary:hover {
+    background-color: #febbbb;
+    border: #febbbb;
+    color: #1f4172;
 }
 
 .bg-custom {
@@ -34,18 +41,7 @@ button.btn-primary:hover {
     min-height: 200px;
 }
 
-.btn{
-    color: #ffff;
-    background-color:  #1f4172;
-    
-}
 
-
-
-.btn-primary:hover {
-    background-color: #febbbb;
-    /* Adjust other styles as needed for the hover state */
-}
 
  .imgdiv{
     height: 250px;
@@ -62,6 +58,11 @@ button.btn-primary:hover {
     fill: #ffffff
 }
 
+.wishlistcard{
+    height: 250px;
+    width: 100%; 
+}
   
+
 
  

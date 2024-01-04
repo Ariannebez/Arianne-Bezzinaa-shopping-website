@@ -26,7 +26,7 @@ require_once 'includes/navbar.php';
 
 <!--old cards-->
 <div class="container my-4 ">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         <?php foreach ($products as $product): ?>
         <div class="col-4 mb-5">
             <div class="card" style="width: 18rem;">

@@ -82,7 +82,7 @@ if(!empty($error)): ?>
 </div>
 <?php endif; ?>
 
-<div class="login-container container">
+<div class="container">
     <div class="row mt-5 text-center">
         <h1>Log in</h1>
     </div>
@@ -112,7 +112,7 @@ if(!empty($error)): ?>
 
 
 <!--Sing up area with input fields and buttons-->
-<div class="container mt-5">
+<div class="container">
     <form method="POST">
         <!-- Sing Up Form posting info into database using 'POST'-->
         <div class="row">
@@ -172,9 +172,9 @@ if(!empty($error)): ?>
             </div>
         </div>
         <!-- Form Buttons -->
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-12 mb-3">
-                <button type="submit" class="btn btn-primary w-100 p-2 fs-5">Submit Form</button>
+                <button type="submit" class="btn  btn-primary w-100 p-2 fs-5">Submit Form</button>
             </div>
             <div class="col-12 mb-4">
                 <button type="reset" class="btn btn-primary w-100 p-2 fs-5">Reset Form</button>
