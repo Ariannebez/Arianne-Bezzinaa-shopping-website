@@ -21,11 +21,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $cartItems = [];
         $existingProd = null;
         $updated = false;
-        // Check if there are existing cart items in the session.
+        // Determining whether any cart items are currently in the session.
         if(isset($_SESSION['CART_ITEMS'])) {
             $cartItems = $_SESSION['CART_ITEMS'];
         }
-        // Loop through cart items to check if the product is already added.
+        // Looping through cart items to check if the product is already added or not.
         if(!empty($cartItems)) {
             foreach($cartItems as $key => $value) {
                 // If product is found, increase the quantity.

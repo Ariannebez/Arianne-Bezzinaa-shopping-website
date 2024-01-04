@@ -30,7 +30,7 @@
             
         
             // Call the function and pass the form data and file
-            $result = addProduct($con, $_POST['name'], $_POST['title'], $_POST['description'], $_POST['category'], $_POST['price'], $_POST['stockQty'], $_POST['image']);
+            $result = addProduct($con, $_POST['name'], $_POST['title'], $_POST['description'], $_POST['category'], $_POST['price'], $_POST['stockQty'], $_POST['img']);
 
         
             if ($result) {
@@ -84,8 +84,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image">Image: Enter link</label>
-                    <input type="text" class="form-control" id="image" name="image" required>
+                    <label for="img">Image: Enter link</label>
+                    <input type="text" class="form-control" id="img" name="img" required>
 
                 </div>
 

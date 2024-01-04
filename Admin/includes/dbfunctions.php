@@ -195,7 +195,7 @@ function deleteUser($con, $userId) {
 
 
 
-//Add peoduct 
+//Add product 
 function addProduct($con, $name, $title, $description, $category, $price, $stockQty, $img) {
     // SQL query with placeholders
     $sql = "INSERT INTO product (name, title, description, categoryid, price, stockQty, img) VALUES (?, ?, ?, ?, ?, ?, ?);";

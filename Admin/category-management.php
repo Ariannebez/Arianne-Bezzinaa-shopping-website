@@ -12,8 +12,8 @@ require_once 'includes/dbfunctions.php';
 <div class="container">
       <div class="row">
             <div class="col mt-5">
-        
-<table class="table table-bordered ">
+ <h1>Categories</h1>       
+<table class="table table-bordered mt-5">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -31,7 +31,7 @@ require_once 'includes/dbfunctions.php';
             echo "<tr>";
             echo "<td>" . $category['id'] . "</td>";
             echo "<td>" . $category['name'] . "</td>";
-            echo "<td><img src='" . $category['image'] . "' alt='" . $category['name'] . "' /></td>";
+            echo "<td><img src='" . $category['image'] . "' alt='" . $category['name'] . "' class='category-image' /></td>";
             echo "</tr>";
         }
     } else {
