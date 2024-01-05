@@ -330,6 +330,7 @@ function createOrder($con, $user, $selectedAddress, $cartItems)
     return $result;
 }
 
+// Update Address
 function updateAddress($con, $address)
 {
     $id = $address["id"];
@@ -354,6 +355,7 @@ function updateAddress($con, $address)
     return $result;
 }
 
+//Up date user 
 function updateUser($con, $user)
 {
     $id = $user["id"];

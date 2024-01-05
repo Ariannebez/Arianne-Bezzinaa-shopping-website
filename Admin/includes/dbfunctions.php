@@ -269,7 +269,46 @@ function getCategories($con) {
     return $categories;
 }
 
+//Get product by id
+function GetProductByID($con, $id)
+{
+    // Select a user by ID.
+    $sql = "SELECT * FROM product WHERE id = '$id'"; 
 
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load products";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+        return $result->fetch_assoc();
+    }
+    return false;
+}
+
+//Update Product 
+function updateProduct($con, $product)
+{
+    $sql = "UPDATE product SET name = ?, description = ?, categoryid = ?, price = ?, stockQty = ?, img = ? WHERE id = ?;";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not prepare statement";
+        exit();
+    }
+
+    // Bind parameters to the prepared statement
+    mysqli_stmt_bind_param($stmt, "sssdiss", $product["name"], $product["description"], $product["categoryid"], $product["price"], $product["stockQty"], $product["img"], $product["id"]);
+
+    $result = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    return $result;
+}
 
 
 

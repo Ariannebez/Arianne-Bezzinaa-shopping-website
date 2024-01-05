@@ -1,52 +1,67 @@
-<!--add, edit and delet products in admin-->
-
+<!--add, edit and delete products in admin-->
 
 <?php 
-      require_once 'includes/functions.php';
-      require_once 'includes/dbfunctions.php';
+require_once 'includes/functions.php';
+require_once 'includes/dbfunctions.php';
 
-      //Loading product from database
-      $products = getProducts($con);
+//Loading product from database
+$products = getProducts($con);
 
-      // Delete product
-    if (isset($_GET['delete'])) {
-        $productId = $_GET['delete'];
+// Delete product
+if (isset($_GET['delete'])) {
+    $productId = $_GET['delete'];
 
-        if (deleteProduct($con, $productId)) {
-            // Success message
-            $message = "Product Deleted Successfully";
-        } else {
-            // Error message
-            $message = "Error Deleting Product";
-        }
-
-        header('Location: product-management.php');
-        exit();
+    if (deleteProduct($con, $productId)) {
+        // Success message
+        $message = "Product Deleted Successfully";
+    } else {
+        // Error message
+        $message = "Error Deleting Product";
     }
 
+    header('Location: product-management.php');
+    exit();
+}
 
-    // Adding new product
-    if (isset($_POST['add_product'])) {
-            
-        
-            // Call the function and pass the form data and file
-            $result = addProduct($con, $_POST['name'], $_POST['title'], $_POST['description'], $_POST['category'], $_POST['price'], $_POST['stockQty'], $_POST['img']);
+// Update product
+if (isset($_POST['update_product'])) {
+    $product = [
+        "id" => $_POST['id'],
+        "name" => $_POST['name'],
+        "description" => $_POST['description'],
+        "categoryid" => $_POST['categoryid'],
+        "price" => $_POST['price'],
+        "stockQty" => $_POST['stockQty'],
+        "img" => $_POST['img']
+    ];
 
-        
-            if ($result) {
-                echo "Product added successfully!";
-            } else {
-                echo "Error adding product.";
-            }
+    if(updateProduct($con, $product)) {
+        // Redirect to product-management page
+        header("Location: product-management.php");
+        exit();
+    } else {
+        echo "Error updating product";
+    }
+}
 
-            header('Location: product-management.php');
-            exit();
-        }
-        
+// Adding new product
+if (isset($_POST['add_product'])) {
+    // Call the function and pass the form data and file
+    $result = addProduct($con, $_POST['name'], $_POST['title'], $_POST['description'], $_POST['category'], $_POST['price'], $_POST['stockQty'], $_POST['img']);
 
-      require_once 'includes/header.php'; 
-      require_once 'includes/navbar.php'; 
- ?>
+    if ($result) {
+        echo "Product added successfully!";
+    } else {
+        echo "Error adding product.";
+    }
+
+    header('Location: product-management.php');
+    exit();
+}
+
+require_once 'includes/header.php'; 
+require_once 'includes/navbar.php'; 
+?>
 
 <div class="container mt-5">
     <div class="row">
@@ -113,9 +128,9 @@
                     <p class="card-text"><?php echo $product['description']; ?></p>
                     <p class="card-text"><small class="text-muted">Price: &euro;<?php echo $product['price']; ?></small></p>
                     <p class="card-text"><small class="text-muted">Stock Qty: <?php echo $product['stockQty']; ?></small></p>
-                    <!--BTN edit or delete-->
-                    <a href="edit-product.php?id=<?php echo $product['id']; ?>" class="btn btn-primary">Edit</a>
-                    
+                    <!--BTN edit goes to product details page-->
+                    <a href="product-details-management.php?productId=<?php echo $product['id']; ?>" class="btn btn-primary">Edit</a>
+                    <!--Delete-->
                     <form action="product-management.php" method="GET">
                     <input type="hidden" name="delete" value="<?php echo $product['id']; ?>">
                     <button class="btn btn-danger mt-3" type="submit">Delete</button>

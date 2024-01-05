@@ -54,9 +54,10 @@ require_once 'includes/navbar.php';
                     
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-primary" type="submit" name="addToWishlist" <?php if(!$isLoggedIn) echo 'disabled'; ?>>
-                                <ion-icon name="<?php echo $isInWishlist ? 'heart' : 'heart-outline'; ?>"></ion-icon>
-                            </button>
+                        <button class="btn btn-primary" type="submit" name="addToWishlist" <?php if(!$isLoggedIn) echo 'disabled'; ?>>
+                        <!-- Display heart-outline by default, switch to heart if user is logged in and item is in wishlist -->
+                        <ion-icon name="<?php echo ($isLoggedIn && $isInWishlist) ? 'heart' : 'heart-outline'; ?>"></ion-icon>
+                        </button>
                             
                             <?php if($product["stockQty"] > 0) : ?>
                                 <button name="addToCart" type="submit" class="btn btn-primary" <?php if(!$isLoggedIn) echo 'disabled'; ?>>ADD TO CART</button>
