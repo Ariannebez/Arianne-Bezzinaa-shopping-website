@@ -83,9 +83,9 @@ if(!empty($error)): ?>
 </div>
 <?php endif; ?>
 
-<div class="login-container container">
-    <div class="row mt-5 text-center">
-        <h1>Log in</h1>
+    <div class="login-container container">
+    <div class="row mt-5 text justify-content-center">
+        <h1>Welcome To Admin - Log in</h1>
     </div>
 
     <form method="post">

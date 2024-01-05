@@ -41,7 +41,7 @@ require_once 'includes/navbar.php';
     <div class="row">
         <div class="col-md-8 offset-md-2"> 
             <!-- Back Button -->
-            <button type="button" class="mb-5 btn btn-primary" onclick="location.href='product-management.php'">Go Back to Product Management</button>
+            <button type="button" class="mb-3 btn btn-secondary" onclick="location.href='product-management.php'">Go Back to Product Management</button>
             <h1><?php echo $product ? 'Edit Product' : 'Add New Product'; ?></h1>
             <form action="<?php echo $actionUrl; ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
@@ -81,10 +81,11 @@ require_once 'includes/navbar.php';
 
                 <input type="hidden" name="id" value="<?php echo $product ? $product['id'] : ''; ?>">
 
-                <button type="submit" class="btn btn-primary" name="<?php echo $product ? 'update_product' : 'add_product'; ?>">
+                <button type="submit" class="btn btn-primary mb-5" name="<?php echo $product ? 'update_product' : 'add_product'; ?>">
                 Update Product 
                 </button>
             </form>
         </div>
     </div>
 </div>
+
