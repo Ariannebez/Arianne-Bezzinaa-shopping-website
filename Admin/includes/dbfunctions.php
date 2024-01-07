@@ -84,7 +84,7 @@ function createUser($con, $user) {
 function createAddress($con, $userID, $addressData) {
     // Check if 'street' is provided
     if (!isset($addressData['street']) || $addressData['street'] === null) {
-        echo "Street address is required.";
+        
         return false;
     }
 
@@ -189,12 +189,6 @@ function deleteUser($con, $userId) {
 }
 
 
-
-//Edit
-
-
-
-
 //Add product 
 function addProduct($con, $name, $title, $description, $category, $price, $stockQty, $img) {
     // SQL query with placeholders
@@ -291,6 +285,9 @@ function GetProductByID($con, $id)
     return false;
 }
 
+
+
+
 //Update Product 
 function updateProduct($con, $product)
 {
@@ -309,6 +306,8 @@ function updateProduct($con, $product)
     mysqli_stmt_close($stmt);
     return $result;
 }
+
+
 
 
 

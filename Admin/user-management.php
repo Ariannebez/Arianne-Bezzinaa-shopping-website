@@ -3,33 +3,18 @@
       require_once 'includes/functions.php';
       require_once 'includes/dbfunctions.php';
       $allUsers = getAllUsersAndAdmins($con);
-      ?>
+    
 
-<?php
-// ... include dbfunctions.php and establish database connection ...
+      if (isset($_GET['delete'])) {
+        $userId = $_GET['delete'];
+        deleteUser($con, $userId);
+        // Redirect to avoid re-deleting on refresh
+        header("Location: user-management.php");
+        exit();
+        }
+    
 
-if (isset($_GET['delete'])) {
-    $userId = $_GET['delete'];
-    deleteUser($con, $userId);
-    // Redirect to avoid re-deleting on refresh
-    header("Location: user-management.php");
-    exit();
-}
-
-if (isset($_POST['edit'])) {
-    // Assuming you have a form for editing with method="post"
-    $userId = $_POST['userId'];
-    $email = $_POST['email'];
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-
-    editUser($con, $userId, $email, $firstName, $lastName);
-    // Redirect to avoid re-submitting on refresh
-    header("Location: user-management.php");
-    exit();
-}
-
-
+        
 
 require_once 'includes/header.php'; 
 require_once 'includes/navbar.php'; ?>
@@ -58,7 +43,7 @@ require_once 'includes/navbar.php'; ?>
             <td><?php echo htmlspecialchars($user['lastName']); ?></td>
             <td><?php echo htmlspecialchars($user['userType']); ?></td>
             <td>
-            <a href='admin-edit-user.php?edit={{USER_ID}}' class='btn btn-primary'>Edit</a>
+            <a href='admin-edit-user.php?edit=<?php echo $user['id']; ?>&type=<?php echo $user['userType']; ?>' class='btn btn-primary'>Edit</a>
             <a href="user-management.php?delete=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
             </td>
         </tr>
@@ -67,13 +52,6 @@ require_once 'includes/navbar.php'; ?>
 </table>
 
 </div>
-
-
-
-
-
-
-
 
 <?php require_once 'includes/footer.php'; ?>
 
