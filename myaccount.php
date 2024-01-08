@@ -49,6 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 $address['Mobile'] = htmlspecialchars(addslashes($_POST['mobile']));
                 $address['Default'] = 'true';
 
+                
                 createAddress($con, $user['ID'], $address);
                 $userCreated = true;
             }
@@ -101,7 +102,7 @@ if(!empty($error)): ?>
                         <input type="password" name="password" id="password" class="form-control" required>
                     </div>
 
-                    <div class="d-grid">
+                    <div class="d-grid mb-5">
                         <button type="submit" name="submit" class="btn btn-primary">Log In</button>
                     </div>
                 </div>

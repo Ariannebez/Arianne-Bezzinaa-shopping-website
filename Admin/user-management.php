@@ -1,9 +1,8 @@
-
 <?php
       require_once 'includes/functions.php';
       require_once 'includes/dbfunctions.php';
+      
       $allUsers = getAllUsersAndAdmins($con);
-    
 
       if (isset($_GET['delete'])) {
         $userId = $_GET['delete'];

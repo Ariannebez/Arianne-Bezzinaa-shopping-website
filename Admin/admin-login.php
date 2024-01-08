@@ -43,14 +43,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             $user['ID'] = createUser($con, $user);
             if($user['ID'] > 0) {
                 // Setting UserCreated to true
-                $address['Street'] = htmlspecialchars(addslashes($_POST['street']));
-                $address['City'] = htmlspecialchars(addslashes($_POST['city']));
-                $address['ZipCode'] = htmlspecialchars(addslashes($_POST['zipCode']));
-                $address['Region'] = htmlspecialchars(addslashes($_POST['region']));
-                $address['Mobile'] = htmlspecialchars(addslashes($_POST['mobile']));
-                $address['Default'] = 'true';
+                $addressAdmin['Street'] = htmlspecialchars(addslashes($_POST['street']));
+                $addressAdmin['City'] = htmlspecialchars(addslashes($_POST['city']));
+                $addressAdmin['ZipCode'] = htmlspecialchars(addslashes($_POST['zipCode']));
+                $addressAdmin['Region'] = htmlspecialchars(addslashes($_POST['region']));
+                $addressAdmin['Mobile'] = htmlspecialchars(addslashes($_POST['mobile']));
+                $addressAdmin['Default'] = 'true';
 
-                createAddress($con, $user['ID'], $address);
+                createAddress($con, $user['ID'], $addressAdmin);
                 $userCreated = true;
             }
         }
@@ -133,11 +133,7 @@ if(!empty($error)): ?>
                             
                         </div>
                     </div>
-                    <div class="form-floating mb-3">
-                        <label for="mobile">Mobile</label>
-                        <input type="input" class="form-control" id="mobile" name="mobile" required>
-                        
-                    </div>
+                    
                     <div class="form-floating mb-3">
                         <label for="signupEmail">Email</label>
                         <input type="email" class="form-control" id="email" name="signupEmail" required>
@@ -176,7 +172,10 @@ if(!empty($error)): ?>
                         <input type="input" class="form-control" id="region" name="region" required>
                         <label for="region">Region</label>
                     </div>
-                    
+                    <div class="form-floating mb-3">
+                        <input type="input" class="form-control" id="mobile" name="mobile" required>
+                        <label for="mobile">Mobile</label>
+                    </div>
                 </div>
             </div>
         </div>

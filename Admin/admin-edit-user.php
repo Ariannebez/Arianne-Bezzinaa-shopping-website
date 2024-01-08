@@ -1,76 +1,178 @@
-<?php
-require_once 'includes/dbfunctions.php';
+<?php 
 require_once 'includes/functions.php';
+require_once 'includes/dbfunctions.php';
 
-// Initialize variables
-$userData = null;
-$updateSuccess = false;
+if(!isset($_SESSION['USER'])) {
+  header("Location: index.php");
+}
+$incorrectPassword = null;
+$user = GetUserByID($con, $_SESSION['USER']['id']);
 
-// Check if the edit and type parameters are set
-if (isset($_GET['edit']) && isset($_GET['type'])) {
-    $userId = $_GET['edit'];
-    $userType = $_GET['type'];
-
-    // Fetch user data based on type
-    if ($userType === 'user') {
-        $userData = getUserById($con, $userId);
-    } else if ($userType === 'userAdmin') {
-        $userData = getUserAdminById($con, $userId);
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if(isset($_POST["updateUser"])) {
+        $user["firstName"] = $_POST["firstName"];
+        $user["lastName"] = $_POST["lastName"];
+        $user["mobile"] = $_POST["mobile"];
+        updateUser($con, $user);
+        $user = GetUserByID($con, $_SESSION["USER"]["id"]);
+    } else if(isset($_POST["updateAddress"])) {
+        $address = [];
+        $address["id"] = $_POST["id"];
+        $address["street"] = $_POST["street"];
+        $address["city"] = $_POST["city"];
+        $address["zipCode"] = $_POST["zipCode"];
+        $address["region"] = $_POST["region"];
+        $address["mobile"] = $_POST["mobile"];
+        updateAddress($con, $address);
+    } else if(isset($_POST["updatePassword"])) {
+        $password = sha1(htmlspecialchars(addslashes($_POST['currentPassword'])));
+        if(strtoupper($password) == strtoupper($user['password'])) {
+            $newPassword = sha1(htmlspecialchars(addslashes($_POST['newPassword'])));
+            $confirmPassword = sha1(htmlspecialchars(addslashes($_POST['confPassword'])));
+            // Check if new passwords match.
+            if($newPassword == $confirmPassword) {
+                $user['password'] = $newPassword;
+                $incorrectPassword = "";
+                $passwordUpdated = true;
+            }
+            else {
+                $incorrectPassword = "Passwords do not match!";
+            }
+        }
+        else {
+            $incorrectPassword = "Current password is incorrect";
+        }
+        // Update user, if there's no error.
+        if(empty($incorrectPassword)) {
+            updateUserPassword($con, $user);
+        }
+        // Fetch the updated user details.
+        $user = GetUserByID($con, $user["id"]);
+    } else if(isset($_POST["updateEmail"])) {
+        $user["email"] = $_POST["email"];
+        updateUserEmail($con, $user);
     }
 }
 
-// Handle form submission
-if (isset($_POST['updateUser'])) {
-    // Retrieve form data
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    // Add other fields as needed
+//Getting the user's details.
 
-    // Update the user or userAdmin based on $userType
-    if ($userType === 'user') {
-        // Call a function to update user data
-        updateUser($con, $userId, $firstName, $lastName); // Modify as needed
-    } else if ($userType === 'userAdmin') {
-        // Call a function to update userAdmin data
-        updateUserAdmin($con, $userId, $firstName, $lastName); // Modify as needed
-    }
-
-    // Set update success flag
-    $updateSuccess = true;
-}
-
-// Redirect back to user-management.php after update
-if ($updateSuccess) {
-    header("Location: user-management.php");
-    exit();
-}
+$address = GetAddressesByUser($con, $_SESSION['USER']['id']);
 
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 ?>
 
-<!-- HTML for the form -->
-<div class="container mt-5">
-    <h2>Edit User</h2>
-    <?php if ($userData): ?>
-        <form method="POST">
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo htmlspecialchars($userData['firstName']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo htmlspecialchars($userData['lastName']); ?>" required>
-            </div>
-            <!-- Add other fields as needed -->
 
-            <button type="submit" name="updateUser" class="btn btn-primary">Update User</button>
-        </form>
-    <?php else: ?>
-        <p>User not found.</p>
-    <?php endif; ?>
+<div class="container">
+
+    <div class="row mt-5 mb-5 pb-5">
+        <div class="row">
+            <h1>My Account</h1>
+        </div>
+
+        <div class="card">
+            <h5 class="card-header">My Profile</h5>
+            <div class="card-body">
+                    <!-- Sing Up Form posting info into database using 'POST'-->
+                    <div class="row">
+                        <div class="col-lg-7 col-md-12">
+                            <!-- Sing Up -->
+                            <div class="border p-3 mb-3">
+                                <h3>Details</h3>
+                                <div class="row">
+                                    <form method="POST">
+                                    <div class="form-floating mb-3 col">
+                                        <input type="input" class="form-control" id="firstName" name="firstName" value="<?php echo $user['firstName']; ?>"
+                                            required> 
+                                        <label for="firstName" require>First Name</label>
+                                    </div>
+                                    <div class="form-floating mb-3 col">  
+                                        <input type="input" class="form-control" value="<?php echo $user['lastName']; ?>" id="lastName" name="lastName" required>
+                                        <label for="lastName" required>Last Name</label>
+                                    </div>
+                                    <div class="form-floating col">  
+                                        <input type="input" class="form-control" value="<?php echo $user['mobile']; ?>" id="mobile" name="mobile" required>
+                                        <label for="mobile" required>Mobile</label>
+                                    </div>
+                                    <button type="submit" name="updateUser" class="btn btn-success w-100 p-2 fs-5 my-2">Update
+                                        User</button>
+                                </form>
+                                </div>
+                                <form method="post">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" name="email" required value="<?php echo $user['email']; ?>">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <button type="submit" name="updateEmail" class="btn btn-success w-100 p-2 fs-5 my-2">Update
+                                        Email</button>
+                                </form>
+                                <form method="post">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="password" name="currentPassword"
+                                            required>
+                                        <label for="currentPassword">Current Password</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="password" name="newPassword"
+                                            required>
+                                        <label for="newPassword">New Password</label>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="confPassword"
+                                            name="confPassword" required>
+                                        <label for="confPassword">Confirm Password</label>
+                                    </div> 
+                                    <button type="submit" name="updatePassword" class="btn btn-success w-100 p-2 fs-5 my-2">Update
+                                        Password</button>
+                                    <?php if (isset($incorrectPassword) && !empty($incorrectPassword)) ; ?>
+                                    <h5><?php echo $incorrectPassword; ?></h5>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5 col-md-12">
+                            <!-- Residence -->
+                            <div class="border p-3 mb-3">
+                                <h3>Residence</h3>
+                                <form method="post">
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="street" name="street" value="<?php echo isset($addressData['street']) ? htmlspecialchars($addressData['street']) : ''; ?>" required>
+
+                                    <label for="street">Street</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="city" name="city" value="<?php echo isset($addressData['city']) ? htmlspecialchars($addressData['city']) : ''; ?>" required>
+                                    <label for="city">City</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="zipCode" name="zipCode" value="<?php echo isset($addressData['zipCode']) ? htmlspecialchars($addressData['zipCode']) : ''; ?>" required>
+
+                                    <label for="zipCode">ZipCode</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="region" name="region" value="<?php echo isset($addressData['region']) ? htmlspecialchars($addressData['region']) : ''; ?>" required>
+
+                                    <label for="region">Region</label>
+                                </div>
+                                <div class="form-floating">
+                                <input type="text" class="form-control" id="mobile" name="mobile" value="<?php echo isset($addressData['mobile']) ? htmlspecialchars($addressData['mobile']) : ''; ?>" required>
+
+                                    <label for="mobile">Mobile</label>
+                                </div>
+                                <input type="hidden" name="id" value="<?php echo $address['id']; ?>">
+                                <button type="submit" name="updateAddress" class="btn btn-success w-100 p-2 fs-5 my-2">Update
+                                        Address</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!--row closes -->
 </div>
 
 <?php
-require_once 'includes/footer.php';
-?>
+        include 'includes/footer.php';
+    ?>

@@ -94,7 +94,7 @@ require_once 'includes/navbar.php';
   <?php endforeach; ?>
   
 
-  <div class="row">
+  <div class="row mb-5">
     <div class="card cardCheckOut mb-3">
       <div class="card-header">
         Checkout
