@@ -2,14 +2,15 @@
       require_once 'includes/functions.php';
       require_once 'includes/dbfunctions.php';
       
-      $allUsers = getAllUsersAndAdmins($con);
+      $users = GetUser($con);
+      $roles = GetRole($con);
 
       if (isset($_GET['delete'])) {
         $userId = $_GET['delete'];
         deleteUser($con, $userId);
         // Redirect to avoid re-deleting on refresh
-        header("Location: user-management.php");
-        exit();
+       header("Location: user-management.php");
+       exit();
         }
     
 
@@ -34,23 +35,22 @@ require_once 'includes/navbar.php'; ?>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($allUsers as $user): ?>
+        <?php foreach($users as $user) : ?>
         <tr>
-            <td><?php echo htmlspecialchars($user['id']); ?></td>
-            <td><?php echo htmlspecialchars($user['email']); ?></td>
-            <td><?php echo htmlspecialchars($user['firstName']); ?></td>
-            <td><?php echo htmlspecialchars($user['lastName']); ?></td>
-            <td><?php echo htmlspecialchars($user['userType']); ?></td>
+            <td><?php echo ($user['id']); ?></td>
+            <td><?php echo ($user['email']); ?></td>
+            <td><?php echo ($user['firstName']); ?></td>
+            <td><?php echo ($user['lastName']); ?></td>
+            <td><?php echo ($user['role']); ?></td>
             <td>
-            <a href='admin-edit-user.php?edit=<?php echo $user['id']; ?>&type=<?php echo $user['userType']; ?>' class='btn btn-primary'>Edit</a>
+            <a href="admin-edit-user.php?editUserId=<?php echo htmlspecialchars($user['id']); ?>">Edit</a>
             <a href="user-management.php?delete=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
             </td>
         </tr>
-        <?php endforeach; ?>
+       <?php endforeach ?> 
     </tbody>
 </table>
 
 </div>
 
 <?php require_once 'includes/footer.php'; ?>
-

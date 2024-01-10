@@ -1,4 +1,10 @@
-<?php ?>
+<?php 
+
+require_once 'includes/functions.php';
+require_once 'includes/dbfunctions.php';
+
+$order = getOrder($con);
+?>
 
 <?php require_once 'includes/header.php'; 
       require_once 'includes/navbar.php'; ?>
@@ -8,47 +14,32 @@
 
   <div class="col">
     <h2>Review Management</h2>
-    <table class="table table-bordered">
-      <thead>
+    <table border="1">
         <tr>
-          <th>Id</th>
-          <th>CustomerId</th>
-          <th>Order Date</th>
-          <th>ProductId</th>
-          <th>Qty</th>
-          <th>Total Amount</th>
-          <th>Order Satatus</th>
-          <th>Payment Satatus</th>
-
+            <th>Order ID</th>
+            <th>User ID</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+            <th>Order Status</th>
+            <th>Action</th>
         </tr>
-      </thead>
-      <tbody>
+        <?php foreach ($order as $row): ?>
         <tr>
-          <td>1</td>
-          <td>303</td>
-          <td>10-11-2023</td>
-          <td>6</td>
-          <td>10</td>
-          <td>75.5</td>
-          <td>paid</td>
-          <td><button type="button" class="btn btn-primary">Edit</button><button type="button"
-              class="btn btn-danger">Delete</button></td>
-
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['userid']; ?></td>
+            <td><?php echo $row['createddate']; ?></td>
+            <td><?php echo $row['updateddate']; ?></td>
+            <td><?php echo $row['addressid']; ?></td>
+            <td><?php echo $row['statusid']; ?></td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="delete_order_id" value="<?php echo $row['id']; ?>">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>304</td>
-          <td>10-11-2023</td>
-          <td>3</td>
-          <td>5</td>
-          <td>30.5</td>
-          <td>paid</td>
-          <td><button type="button" class="btn btn-primary">Edit</button><button type="button"
-              class="btn btn-danger">Delete</button></td>
-
-        </tr>
-
-      </tbody>
+        <?php endforeach; ?>
     </table>
   </div>
 </div>

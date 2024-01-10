@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $user = GetUserByID($con, $_SESSION["USER"]["id"]);
     } else if(isset($_POST["updateAddress"])) {
         $address = [];
-        $address["id"] = $_POST["id"];
+        $address["id"] = $_POST["addressid"];
         $address["street"] = $_POST["street"];
         $address["city"] = $_POST["city"];
         $address["zipCode"] = $_POST["zipCode"];
@@ -137,30 +137,26 @@ require_once 'includes/navbar.php';
                                 <h3>Residence</h3>
                                 <form method="post">
                                 <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="street" name="street" value="<?php echo isset($addressData['street']) ? htmlspecialchars($addressData['street']) : ''; ?>" required>
-
+                                    <input type="input" class="form-control" id="street" name="street" value="<?php echo $address['street']; ?>" required>
                                     <label for="street">Street</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="city" name="city" value="<?php echo isset($addressData['city']) ? htmlspecialchars($addressData['city']) : ''; ?>" required>
+                                    <input type="input" class="form-control" id="city" value="<?php echo $address['city']; ?>" name="city" required>
                                     <label for="city">City</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="zipCode" name="zipCode" value="<?php echo isset($addressData['zipCode']) ? htmlspecialchars($addressData['zipCode']) : ''; ?>" required>
-
+                                    <input type="input" class="form-control" id="zipCode" value="<?php echo $address['zipCode']; ?>" name="zipCode" required>
                                     <label for="zipCode">ZipCode</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="region" name="region" value="<?php echo isset($addressData['region']) ? htmlspecialchars($addressData['region']) : ''; ?>" required>
-
+                                    <input type="input" class="form-control" id="region" value="<?php echo $address['region']; ?>" name="region" required>
                                     <label for="region">Region</label>
                                 </div>
                                 <div class="form-floating">
-                                <input type="text" class="form-control" id="mobile" name="mobile" value="<?php echo isset($addressData['mobile']) ? htmlspecialchars($addressData['mobile']) : ''; ?>" required>
-
+                                    <input type="input" class="form-control" id="mobile" value="<?php echo $address['mobile']; ?>" name="mobile" required>
                                     <label for="mobile">Mobile</label>
                                 </div>
-                                <input type="hidden" name="id" value="<?php echo $address['id']; ?>">
+                                <input type="hidden" name="addressid" value="<?php echo $address['id']; ?>">
                                 <button type="submit" name="updateAddress" class="btn btn-success w-100 p-2 fs-5 my-2">Update
                                         Address</button>
                                 </form>

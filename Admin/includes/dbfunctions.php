@@ -1,10 +1,11 @@
 <?php
 
 // user login
+//call by role 2, so only admin user logins
 function userLogin($con, $email, $password)
 {
     $password = sha1($password);
-    $sql = "SELECT * FROM userAdmin WHERE email = '$email' && password = '$password' LIMIT 1";
+    $sql = "SELECT * FROM user WHERE role = '2' && email = '$email' && password = '$password' LIMIT 1";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -31,7 +32,7 @@ function userLogin($con, $email, $password)
 function CheckUserExists($con, $email)
 {
     // Selecting a user by ID.
-    $sql = "SELECT * FROM userAdmin WHERE email = '$email'"; 
+    $sql = "SELECT * FROM user WHERE email = '$email'"; 
 
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -49,105 +50,41 @@ function CheckUserExists($con, $email)
     return false;
 }
 
-//Creating admin user
-function createUser($con, $user) {
-    $userName = $user["Name"];
-    $userSurname = $user["Surname"];
-    $userEmail = $user["Email"];
-    $userPassword = $user["Password"]; 
-    $userContactNumber = $user["ContactNumber"];
+//Get users 
+function GetUser($con)
+{
+    // Select a user by ID.
+    $sql = "SELECT * FROM user" ; 
 
-    // SQL query with placeholders
-    $sql = "INSERT INTO userAdmin (email, firstName, lastName, joined, password, mobile, role) VALUES (?, ?, ?, NOW(), ?, ?, 2);";
-    
-    
     $stmt = mysqli_stmt_init($con);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "SQL statement failed";
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Users";
         exit();
     }
 
-    // Attaching the parameters to the SQL query.
-    mysqli_stmt_bind_param($stmt, "sssss", $userEmail, $userName, $userSurname, $userPassword, $userContactNumber);
-
-    // Runing the statement and make sure there are no errors.
-    if (!mysqli_stmt_execute($stmt)) {
-        echo "Error executing statement: " . mysqli_error($con);
-        exit();
-    }
-
-    $result = mysqli_stmt_insert_id($stmt);
-    mysqli_stmt_close($stmt);
-
-    return $result;
-}
-
-// Creating Address for admin
-function createAddress($con, $userID, $addressAdmin) {
-    $street = $addressAdmin["Street"];
-    $city = $addressAdmin["City"];
-    $zipCode = $addressAdmin["ZipCode"];
-    $region = $addressAdmin["Region"];
-    $default = $addressAdmin["Default"] == 'true' ? 1 : 0;
-    $mobile = $addressAdmin['Mobile'];
-
-    if ($default) {
-        $sql = "UPDATE addressAdmin SET Def = '0' WHERE userid = '$userID';";
-        $stmt = mysqli_stmt_init($con);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            echo "Could not update addressAdmin";
-            exit();
-        }
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_close($stmt);
-    }
-
-    $sql = "INSERT INTO addressAdmin (street, city, zipCode, region, userid, def, mobile) VALUES (?, ?, ?, ?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($con);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "Could not insert into addressAdmin";
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "sssisss", $street, $city, $zipCode, $region, $userID, $default, $mobile);
     mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_insert_id($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     mysqli_stmt_close($stmt);
-
     return $result;
 }
 
+//role
+function GetRole($con)
+{
+    // Select a user by ID.
+    $sql = "SELECT * FROM role" ; 
 
-
-
-// Adding user and userAdmin using union all
-//Get users into table in user-management page
-function getAllUsersAndAdmins($con) {
-    // Check if the database connection is established
-    if ($con === null) {
-        die("Database connection not established.");
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Users";
+        exit();
     }
 
-    // SQL query to select data from both user and userAdmin tables
-    $sql = "SELECT id, email, firstName, lastName, 'User' as userType FROM user
-            UNION ALL
-            SELECT id, email, firstName, lastName, 'UserAdmin' as userType FROM userAdmin";
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
 
-    // Execute the query
-    $result = mysqli_query($con, $sql);
-
-    // Check for query execution error
-    if (!$result) {
-        die("Error fetching users: " . mysqli_error($con));
-    }
-
-    // Fetch all results as an associative array
-    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-    // Free result set
-    mysqli_free_result($result);
-
-    return $users;
+    return $result;
 }
 
 
@@ -182,11 +119,11 @@ function deleteUser($con, $userId) {
         }
 
         // Repeat the deletion for the userAdmin table if necessary
-        $sqlUserAdmin = "DELETE FROM userAdmin WHERE id = ?;";
-        if ($stmtUserAdmin = mysqli_prepare($con, $sqlUserAdmin)) {
-            mysqli_stmt_bind_param($stmtUserAdmin, "i", $userId);
-            mysqli_stmt_execute($stmtUserAdmin);
-            mysqli_stmt_close($stmtUserAdmin);
+        $sqlUserAdmin = "DELETE FROM user WHERE id = ?;";
+        if ($stmtUser = mysqli_prepare($con, $sqlUser)) {
+            mysqli_stmt_bind_param($stmtUser, "i", $userId);
+            mysqli_stmt_execute($stmtUser);
+            mysqli_stmt_close($stmtUser);
         }
 
         // Commit the transaction
@@ -317,8 +254,78 @@ function updateProduct($con, $product)
     return $result;
 }
 
+//Editing user and userAdmin deatails not working 
+//NOT WORKING - adding funcations
+function GetUserByID($con, $id)
+{
+    // Select a user by ID.
+    $sql = "SELECT * FROM user WHERE id = '$id'"; 
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Users";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+        return $result->fetch_assoc();
+    }
+    return false;
+}
+
+function GetAddressesByUser($con, $userID)
+{
+    $sql = "SELECT * FROM address WHERE userid = '$userID';";
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load Roles";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if(mysqli_num_rows($result) > 0) {
+        return $result->fetch_assoc();
+    }
+    return false;
+}
 
 
+// Getting orders 
+function getOrder($con) {
+    $order = array();
+
+    // SQL query to select id, name, and image from the category table
+    $sql = "SELECT id, userid, createddate, updateddate, addressid, statusid FROM orders";
+
+    // Execute the query
+    $result = mysqli_query($con, $sql);
+
+    // Check if the query was successful
+    if ($result) {
+        // Fetch all rows as an associative array
+        while($row = mysqli_fetch_assoc($result)) {
+            $order[] = $row;
+        }
+    } else {
+        // Optional: Handle error scenario
+        // echo "Error: " . mysqli_error($con);
+    }
+
+    return $order;
+}
+
+
+//Updating users data, email, address and pasword 
 // Update Address
 function updateAddress($con, $address)
 {
@@ -344,7 +351,7 @@ function updateAddress($con, $address)
     return $result;
 }
 
-//Update user 
+//Up date user 
 function updateUser($con, $user)
 {
     $id = $user["id"];
@@ -397,40 +404,6 @@ function updateUserPassword($con, $user)
     mysqli_stmt_close($stmt);
     return $result;
 }
-
-function GetUserByID($con, $id)
-{
-    // Select a user by ID.
-    $sql = "SELECT * FROM user WHERE id = '$id'"; 
-
-    $stmt = mysqli_stmt_init($con);
-    if(!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "Could not load Users";
-        exit();
-    }
-
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    mysqli_stmt_close($stmt);
-
-    if(mysqli_num_rows($result) > 0) {
-        return $result->fetch_assoc();
-    }
-    return false;
-}
-
-function GetAddressesByUser($con, $userId) {
-    $sql = "SELECT * FROM address WHERE id = ?"; // Replace with your actual SQL query
-    $stmt = mysqli_prepare($con, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $userId);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    return mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-
-
-
-
 
 
 
