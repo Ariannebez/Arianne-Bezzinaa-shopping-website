@@ -67,11 +67,11 @@ require_once 'includes/navbar.php';
 
     <div class="row mt-5 mb-5 pb-5">
         <div class="row">
-            <h1>My Account</h1>
+            <h1>User</h1>
         </div>
 
         <div class="card">
-            <h5 class="card-header">My Profile</h5>
+            <h5 class="card-header">User Details</Details></h5>
             <div class="card-body">
                     <!-- Sing Up Form posting info into database using 'POST'-->
                     <div class="row">

@@ -43,7 +43,7 @@ require_once 'includes/navbar.php'; ?>
             <td><?php echo ($user['lastName']); ?></td>
             <td><?php echo ($user['role']); ?></td>
             <td>
-            <a href="admin-edit-user.php?editUserId=<?php echo htmlspecialchars($user['id']); ?>">Edit</a>
+            <a href="admin-edit-user.php?editUserId=<?php echo htmlspecialchars($user['id']); ?>" class="btn btn-primary">Edit</a>
             <a href="user-management.php?delete=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
             </td>
         </tr>

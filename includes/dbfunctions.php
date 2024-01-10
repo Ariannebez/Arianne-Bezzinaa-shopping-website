@@ -1,6 +1,6 @@
 <?php
 
-// user login
+//user login function
 function userLogin($con, $email, $password)
 {
     $password = sha1($password);
@@ -27,9 +27,10 @@ function userLogin($con, $email, $password)
     return false;
 }
 
+//Checking if the user already exists
 function CheckUserExists($con, $email)
 {
-    // Select a user by ID.
+    // Selecting a user by ID.
     $sql = "SELECT * FROM user WHERE email = '$email'"; 
 
     $stmt = mysqli_stmt_init($con);
@@ -43,11 +44,12 @@ function CheckUserExists($con, $email)
     mysqli_stmt_close($stmt);
 
     if(mysqli_num_rows($result) > 0) {
-        return true; //Memory location, this saves session's data 
+        return true; 
     }
     return false;
 }
 
+//Creating user from sing up area in my account page
 function createUser($con, $user)
 {
     $userName = $user["Name"];
@@ -71,6 +73,7 @@ function createUser($con, $user)
     return $result;
 }
 
+//Creating user address from residence area in my account page
 function createAddress($con, $userID, $address)
 {
     $street = $address["Street"];
@@ -108,6 +111,7 @@ function createAddress($con, $userID, $address)
     return $result;
 }
 
+//Getting categories
 function GetCategories($con)
 {
     $sql = "SELECT * FROM category";
@@ -124,6 +128,7 @@ function GetCategories($con)
     return $result;
 }
 
+//Getting products
 function GetProducts($con, $category, $search)
 {
     $sql = "SELECT p.*, c.name as 'categoryName' FROM product p JOIN category c ON p.categoryid = c.id";
@@ -174,6 +179,7 @@ function GetProductByID($con, $id)
 
 }
 
+//Creating wishlist 
 function createWishlistItem($con, $productID, $userID)
 {
     $sql = "INSERT INTO wishlist (user, product) VALUES('$userID', '$productID');";
@@ -210,6 +216,7 @@ function GetWishlistItem($con, $userID, $productID)
     return $result;
 }
 
+// Deleting items from wish list
 function deleteWishlistItem($con, $productID, $userID)
 {
     $sql = "DELETE FROM wishlist WHERE user = '$userID' AND product = '$productID';";
@@ -248,7 +255,7 @@ function GetWishlistByUser($con, $userID)
 
 function GetUserByID($con, $id)
 {
-    // Select a user by ID.
+    // Selecting a user by ID.
     $sql = "SELECT * FROM user WHERE id = '$id'"; 
 
     $stmt = mysqli_stmt_init($con);
@@ -330,7 +337,7 @@ function createOrder($con, $user, $selectedAddress, $cartItems)
     return $result;
 }
 
-// Update Address
+// Updating Address
 function updateAddress($con, $address)
 {
     $id = $address["id"];
@@ -355,7 +362,7 @@ function updateAddress($con, $address)
     return $result;
 }
 
-//Up date user 
+//Updating user 
 function updateUser($con, $user)
 {
     $id = $user["id"];
@@ -375,6 +382,7 @@ function updateUser($con, $user)
     return $result;
 }
 
+//updating email 
 function updateUserEmail($con, $user)
 {
     $id = $user["id"];
@@ -392,6 +400,7 @@ function updateUserEmail($con, $user)
     return $result;
 }
 
+//updating password
 function updateUserPassword($con, $user)
 {
     $id = $user["id"];
@@ -409,6 +418,7 @@ function updateUserPassword($con, $user)
     return $result;
 }
 
+//Getting orders by user
 function GetOrdersByUser($con, $userID)
 {
     $sql = "SELECT o.*, s.status FROM orders o JOIN orderstatus s ON o.statusid = s.id  WHERE o.userid = '$userID' ORDER BY createddate DESC;";
@@ -428,6 +438,7 @@ function GetOrdersByUser($con, $userID)
     return $result;
 }
 
+//Getting order by id
 function GetOrderbyID($con, $orderid)
 {
     $sql = "SELECT o.*, s.status, p.*, op.* FROM orders o JOIN orderstatus s ON o.statusid = s.id JOIN order_product op ON o.id = op.ordersid JOIN product p ON p.id = op.productid WHERE o.id = '$orderid';";

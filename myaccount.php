@@ -146,7 +146,7 @@ if(!empty($error)): ?>
                 </div>
             </div>
             <div class="col-lg-5 col-md-12">
-                <!-- Residence Of User (client)-->
+                <!-- Residence Of User -->
                 <div class="border p-3 mb-3">
                     <h3>Residence</h3>
                     <div class="form-floating mb-3">
