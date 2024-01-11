@@ -50,6 +50,7 @@ function CheckUserExists($con, $email)
     return false;
 }
 
+
 //Get users 
 function GetUser($con)
 {
@@ -103,7 +104,7 @@ function GetRoleById($con, $StatusId)
     $result = mysqli_stmt_get_result($stmt);
     mysqli_stmt_close($stmt);
 
-    return $result;
+    return $result->fetch_assoc();
 }
 
 

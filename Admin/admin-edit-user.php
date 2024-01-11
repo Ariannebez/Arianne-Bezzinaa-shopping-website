@@ -3,6 +3,7 @@ require_once 'includes/functions.php';
 require_once 'includes/dbfunctions.php';
 
 
+
 $incorrectPassword = null;
 $user = GetUserByID($con, $_GET['editUserId']);
 
