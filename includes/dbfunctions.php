@@ -1,6 +1,7 @@
 <?php
 
 //user login function
+//call by role 1, so only user logins to website 
 function userLogin($con, $email, $password)
 {
     $password = sha1($password);
@@ -154,6 +155,7 @@ function GetProducts($con, $category, $search)
     return $result;
 }
 
+//Getting product by id
 function GetProductByID($con, $id)
 {
     $sql = "SELECT p.*, c.name as 'categoryName', c.id as 'categoryID' FROM product p JOIN category c ON p.categoryid = c.id WHERE p.id = '$id'";
@@ -197,6 +199,7 @@ function createWishlistItem($con, $productID, $userID)
     return $result;
 }
 
+//Getting wishlist items 
 function GetWishlistItem($con, $userID, $productID)
 {
     $sql = "SELECT * FROM wishlist WHERE user = '$userID' AND product = '$productID';";
@@ -234,6 +237,7 @@ function deleteWishlistItem($con, $productID, $userID)
     return $result;
 }
 
+//Getting wishlist by id
 function GetWishlistByUser($con, $userID)
 {
     $sql = "SELECT * FROM wishlist WHERE user = '$userID';";

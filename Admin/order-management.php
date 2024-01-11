@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['deleteOrder'])) {
 $order = getOrder($con);
 
 
+
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 ?>
@@ -26,18 +27,20 @@ require_once 'includes/navbar.php';
 <div class="container mt-5">
 
   <div class="col">
-    <h2>Review Management</h2>
+    <h2>Order Management</h2>
     <table class="table table-bordered">
         <tr>
             <th>Order ID</th>
-            <th>User ID</th>
+            <th>User</th>
             <th>Product ID</th>
             <th>Quantity</th>
             <th>Total Amount</th>
             <th>Order Status</th>
             <th>Action</th>
         </tr>
-        <?php foreach ($order as $row): ?>
+        <?php foreach ($order as $row): 
+          
+          ?>
         <tr>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['userid']; ?></td>
