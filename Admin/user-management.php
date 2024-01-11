@@ -3,7 +3,8 @@
       require_once 'includes/dbfunctions.php';
       
       $users = GetUser($con);
-      $roles = GetRole($con);
+      $role = GetRole($con);
+      $roleID = GetRoleById($con, $StatusId);
 
       if (isset($_GET['delete'])) {
         $userId = $_GET['delete'];
@@ -30,20 +31,22 @@ require_once 'includes/navbar.php'; ?>
             <th>Email</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>User Type</th>
+            <th>Role Id</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($users as $user) : ?>
+        <?php foreach($users as $user) : foreach($roleID  as $role)?>
+
         <tr>
             <td><?php echo ($user['id']); ?></td>
             <td><?php echo ($user['email']); ?></td>
             <td><?php echo ($user['firstName']); ?></td>
             <td><?php echo ($user['lastName']); ?></td>
-            <td><?php echo ($user['role']); ?></td>
+            <td><?php echo htmlspecialchars($role['name']); ?></td>
             <td>
-            <a href="admin-edit-user.php?editUserId=<?php echo htmlspecialchars($user['id']); ?>" class="btn btn-primary">Edit</a>
+            <a href="admin-edit-user.php?editUserId=<?php echo $user['id']; ?>">Edit</a>
+
             <a href="user-management.php?delete=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
             </td>
         </tr>

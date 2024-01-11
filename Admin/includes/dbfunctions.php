@@ -21,7 +21,7 @@ function userLogin($con, $email, $password)
 
     if(mysqli_num_rows($result) > 0) {
 
-        $_SESSION['USER'] = $result->fetch_assoc(); //Memory location, this saves session's data 
+        $_SESSION['ADMIN'] = $result->fetch_assoc(); //Memory location, this saves session's data 
         return true;
     }
 
@@ -53,7 +53,7 @@ function CheckUserExists($con, $email)
 //Get users 
 function GetUser($con)
 {
-    // Select a user by ID.
+    
     $sql = "SELECT * FROM user" ; 
 
     $stmt = mysqli_stmt_init($con);
@@ -71,12 +71,12 @@ function GetUser($con)
 //role
 function GetRole($con)
 {
-    // Select a user by ID.
+   
     $sql = "SELECT * FROM role" ; 
 
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "Could not load Users";
+        echo "Could not load roles";
         exit();
     }
 
@@ -86,6 +86,47 @@ function GetRole($con)
 
     return $result;
 }
+
+//get role by id
+function GetRoleById($con, $StatusId)
+{
+   
+    $sql = "SELECT * FROM role WHERE StatusId = {$StatusId}" ; 
+
+    $stmt = mysqli_stmt_init($con);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "Could not load roles";
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+
+//update role
+function updateUserRole($con, $userId, $newRoleId) {
+    $sql = "UPDATE user SET role = ? WHERE id = ?";
+
+    $stmt = mysqli_prepare($con, $sql);
+    if (!$stmt) {
+        die("Error preparing statement: " . mysqli_error($con));
+    }
+
+    mysqli_stmt_bind_param($stmt, "ii", $newRoleId, $userId);
+
+    if (mysqli_stmt_execute($stmt)) {
+        echo "User role updated successfully.";
+    } else {
+        echo "Error updating user role: " . mysqli_stmt_error($stmt);
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 
 
 //Delete user from database
@@ -256,25 +297,25 @@ function updateProduct($con, $product)
 
 //Editing user and userAdmin deatails not working 
 //NOT WORKING - adding funcations
-function GetUserByID($con, $id)
-{
-    // Select a user by ID.
-    $sql = "SELECT * FROM user WHERE id = '$id'"; 
-
+function GetUserByID($con, $id) {
+    $sql = "SELECT * FROM user WHERE id = ?"; 
     $stmt = mysqli_stmt_init($con);
+
     if(!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "Could not load Users";
+        echo "SQL Error";
         exit();
     }
 
+    mysqli_stmt_bind_param($stmt, "i", $id);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     mysqli_stmt_close($stmt);
 
-    if(mysqli_num_rows($result) > 0) {
-        return $result->fetch_assoc();
+    if($result && mysqli_num_rows($result) > 0) {
+        return mysqli_fetch_assoc($result);
+    } else {
+        return false;
     }
-    return false;
 }
 
 function GetAddressesByUser($con, $userID)
@@ -406,6 +447,23 @@ function updateUserPassword($con, $user)
 }
 
 
+// Delete order
+function deleteOrder($con, $orderId) {
+    $sql = "DELETE FROM orders WHERE id = ?";
+    $stmt = mysqli_prepare($con, $sql);
+
+    if (!$stmt) {
+        error_log("Error preparing statement: " . mysqli_error($con));
+        return;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $orderId);
+    if (!mysqli_stmt_execute($stmt)) {
+        error_log("Error executing statement: " . mysqli_stmt_error($stmt));
+    }
+
+    mysqli_stmt_close($stmt);
+}
 
 
 

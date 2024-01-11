@@ -4,7 +4,7 @@
 function userLogin($con, $email, $password)
 {
     $password = sha1($password);
-    $sql = "SELECT * FROM user WHERE email = '$email' && password = '$password' LIMIT 1";
+    $sql = "SELECT * FROM user WHERE role = '1' && email = '$email' && password = '$password' LIMIT 1";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {

@@ -2,11 +2,9 @@
 require_once 'includes/functions.php';
 require_once 'includes/dbfunctions.php';
 
-if(!isset($_SESSION['USER'])) {
-  header("Location: index.php");
-}
+
 $incorrectPassword = null;
-$user = GetUserByID($con, $_SESSION['USER']['id']);
+$user = GetUserByID($con, $_GET['editUserId']);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST["updateUser"])) {
@@ -14,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $user["lastName"] = $_POST["lastName"];
         $user["mobile"] = $_POST["mobile"];
         updateUser($con, $user);
-        $user = GetUserByID($con, $_SESSION["USER"]["id"]);
+        $user = GetUserByID($con, $_GET['editUserId']);
     } else if(isset($_POST["updateAddress"])) {
         $address = [];
         $address["id"] = $_POST["addressid"];
@@ -54,12 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 
+
+
 //Getting the user's details.
 
-$address = GetAddressesByUser($con, $_SESSION['USER']['id']);
+$address = GetAddressesByUser($con, $_GET['editUserId']);
+$role = GetRole($con);
 
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
+
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['updateRole'])) {
+    $newRoleId = $_POST['role'];
+    $userId = $user['id']; // ID of the user being edited
+
+    updateUserRole($con, $userId, $newRoleId);
+
+    // Optionally, refresh the user's data
+    $user = GetUserByID($con, $userId);
+}
 ?>
 
 
@@ -67,11 +78,11 @@ require_once 'includes/navbar.php';
 
     <div class="row mt-5 mb-5 pb-5">
         <div class="row">
-            <h1>User</h1>
+            <h1>My Account</h1>
         </div>
 
         <div class="card">
-            <h5 class="card-header">User Details</Details></h5>
+            <h5 class="card-header">My Profile</h5>
             <div class="card-body">
                     <!-- Sing Up Form posting info into database using 'POST'-->
                     <div class="row">
@@ -164,6 +175,31 @@ require_once 'includes/navbar.php';
                         </div>
                     </div>
             </div>
+
+            <div class="col-lg-7 col-md-12">
+    <div class="border p-3 mb-3">
+        <h3>User Role</h3>
+        <!--role-->
+        <form method="POST">
+                <label for="role">Select Role</label>
+                <select class="form-select" id="role" name="role">
+                <option disabled>Select a Role</option>
+                <?php 
+                foreach($role as $row):
+                    $selected = ($user['role'] == $row["id"]) ? 'selected' : '';
+                ?>
+                    <option value="<?php echo $row["StatusId"]; ?>" <?php echo $selected; ?>>
+                        <?php echo $row["name"]; ?> 
+                    </option>
+                <?php
+                endforeach;
+                ?>
+            </select>
+            <input type="hidden" name="userId" value="<?php echo $user['id']; ?>">
+            <button type="submit" name="updateRole" class="btn btn-success w-100 p-2 fs-5 my-2">Update Role</button>
+        </form>
+    </div>
+</div>
         </div>
     </div>
     <!--row closes -->
