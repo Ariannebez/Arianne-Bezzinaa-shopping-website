@@ -31,11 +31,11 @@ require_once 'includes/navbar.php';
     <table class="table table-bordered">
         <tr>
             <th>Order ID</th>
-            <th>User</th>
-            <th>Product ID</th>
-            <th>Quantity</th>
-            <th>Total Amount</th>
-            <th>Order Status</th>
+            <th>User Id</th>
+            <th>Create Date</th>
+            <th>Up Date Date</th>
+            <th>Address Id</Address></th>
+            <th>Order Status Id</th>
             <th>Action</th>
         </tr>
         <?php foreach ($order as $row): 
