@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $address["city"] = $_POST["city"];
         $address["zipCode"] = $_POST["zipCode"];
         $address["region"] = $_POST["region"];
-        $address["mobile"] = $_POST["mobile"];
+        
         updateAddress($con, $address);
     } else if(isset($_POST["updatePassword"])) {
         $password = sha1(htmlspecialchars(addslashes($_POST['currentPassword'])));
@@ -110,47 +110,48 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['updateRole'])) {
                                 <div class="row">
                                     <form method="POST">
                                     <div class="form-floating mb-3 col">
-                                        <input type="input" class="form-control" id="firstName" name="firstName" value="<?php echo $user['firstName']; ?>"
-                                            required> 
-                                        <label for="firstName" require>First Name</label>
+                                    <label for="firstName" require>First Name</label>
+                                        <input type="input" class="form-control" id="firstName" name="firstName" value="<?php echo $user['firstName']; ?>" required> 
                                     </div>
                                     <div class="form-floating mb-3 col">  
-                                        <input type="input" class="form-control" value="<?php echo $user['lastName']; ?>" id="lastName" name="lastName" required>
                                         <label for="lastName" required>Last Name</label>
+                                        <input type="input" class="form-control" value="<?php echo $user['lastName']; ?>" id="lastName" name="lastName" required>  
                                     </div>
-                                    <div class="form-floating col">  
-                                        <input type="input" class="form-control" value="<?php echo $user['mobile']; ?>" id="mobile" name="mobile" required>
-                                        <label for="mobile" required>Mobile</label>
+
+                                    <div class="form-floating mb-3 col">  
+                                    <label for="mobile" required>Mobile</label>
+                                        <input type="input" class="form-control" value="<?php echo $user['mobile']; ?>" id="mobile" name="mobile" required> 
                                     </div>
-                                    <button type="submit" name="updateUser" class="btn btn-success w-100 p-2 fs-5 my-2">Update
-                                        User</button>
+                                    <button type="submit" name="updateUser" class="btn btn-success w-100 p-2 fs-5 my-2">Update User</button>
                                 </form>
                                 </div>
+
                                 <form method="post">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" name="email" required value="<?php echo $user['email']; ?>">
-                                        <label for="email">Email</label>
+                                    <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required value="<?php echo $user['email']; ?>">  
                                     </div>
-                                    <button type="submit" name="updateEmail" class="btn btn-success w-100 p-2 fs-5 my-2">Update
-                                        Email</button>
+
+                                    <button type="submit" name="updateEmail" class="btn btn-success w-100 p-2 fs-5 my-2">Update Email</button>
                                 </form>
+
                                 <form method="post">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control" id="password" name="currentPassword"
-                                            required>
-                                        <label for="currentPassword">Current Password</label>
+                                    <label for="currentPassword">Current Password</label>
+                                        <input type="password" class="form-control" id="password" name="currentPassword" required>
                                     </div>
+
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control" id="password" name="newPassword"
-                                            required>
-                                        <label for="newPassword">New Password</label>
+                                    <label for="newPassword">New Password</label>
+                                        <input type="password" class="form-control" id="password" name="newPassword" required>   
                                     </div>
 
                                     <div class="form-floating">
+                                    <label for="confPassword">Confirm Password</label>
                                         <input type="password" class="form-control" id="confPassword"
-                                            name="confPassword" required>
-                                        <label for="confPassword">Confirm Password</label>
+                                            name="confPassword" required>   
                                     </div> 
+
                                     <button type="submit" name="updatePassword" class="btn btn-success w-100 p-2 fs-5 my-2">Update
                                         Password</button>
                                     <?php if (isset($incorrectPassword) && !empty($incorrectPassword)) ; ?>
@@ -165,28 +166,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['updateRole'])) {
                                 <h3>Residence</h3>
                                 <form method="post">
                                 <div class="form-floating mb-3">
-                                    <input type="input" class="form-control" id="street" name="street" value="<?php echo $address['street']; ?>" required>
-                                    <label for="street">Street</label>
+                                <label for="street">Street</label>
+                                    <input type="input" class="form-control" id="street" name="street" value="<?php echo $address['street']; ?>" required>   
                                 </div>
+
                                 <div class="form-floating mb-3">
-                                    <input type="input" class="form-control" id="city" value="<?php echo $address['city']; ?>" name="city" required>
-                                    <label for="city">City</label>
+                                <label for="city">City</label>
+                                    <input type="input" class="form-control" id="city" value="<?php echo $address['city']; ?>" name="city" required>   
                                 </div>
+
                                 <div class="form-floating mb-3">
-                                    <input type="input" class="form-control" id="zipCode" value="<?php echo $address['zipCode']; ?>" name="zipCode" required>
-                                    <label for="zipCode">ZipCode</label>
+                                <label for="zipCode">ZipCode</label>
+                                    <input type="input" class="form-control" id="zipCode" value="<?php echo $address['zipCode']; ?>" name="zipCode" required> 
                                 </div>
+
                                 <div class="form-floating mb-3">
-                                    <input type="input" class="form-control" id="region" value="<?php echo $address['region']; ?>" name="region" required>
-                                    <label for="region">Region</label>
+                                <label for="region">Region</label>
+                                    <input type="input" class="form-control" id="region" value="<?php echo $address['region']; ?>" name="region" required> 
                                 </div>
-                                <div class="form-floating">
-                                    <input type="input" class="form-control" id="mobile" value="<?php echo $address['mobile']; ?>" name="mobile" required>
-                                    <label for="mobile">Mobile</label>
-                                </div>
+
                                 <input type="hidden" name="addressid" value="<?php echo $address['id']; ?>">
-                                <button type="submit" name="updateAddress" class="btn btn-success w-100 p-2 fs-5 my-2">Update
-                                        Address</button>
+                                <button type="submit" name="updateAddress" class="btn btn-success w-100 p-2 fs-5 my-2">Update Address</button>
                                 </form>
                             </div>
                         </div>

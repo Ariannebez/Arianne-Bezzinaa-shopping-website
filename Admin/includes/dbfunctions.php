@@ -381,9 +381,9 @@ function updateAddress($con, $address)
     $city = $address["city"];
     $zipCode = $address["zipCode"];
     $region = $address["region"];
-    $mobile = $address["mobile"];
+    
 
-    $sql = "UPDATE address SET street = '$street', city = '$city', zipCode = '$zipCode', region = '$region', mobile = '$mobile' WHERE id = '$id';";
+    $sql = "UPDATE address SET street = '$street', city = '$city', zipCode = '$zipCode', region = '$region' WHERE id = '$id';";
     
     $stmt = mysqli_stmt_init($con);
     if(!mysqli_stmt_prepare($stmt, $sql)) {

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $address["city"] = $_POST["city"];
         $address["zipCode"] = $_POST["zipCode"];
         $address["region"] = $_POST["region"];
-        $address["mobile"] = $_POST["mobile"];
+        
         updateAddress($con, $address);
     } else if(isset($_POST["updatePassword"])) {
         $password = sha1(htmlspecialchars(addslashes($_POST['currentPassword'])));
@@ -152,10 +152,7 @@ require_once 'includes/navbar.php';
                                     <input type="input" class="form-control" id="region" value="<?php echo $address['region']; ?>" name="region" required>
                                     <label for="region">Region</label>
                                 </div>
-                                <div class="form-floating">
-                                    <input type="input" class="form-control" id="mobile" value="<?php echo $address['mobile']; ?>" name="mobile" required>
-                                    <label for="mobile">Mobile</label>
-                                </div>
+                                
                                 <input type="hidden" name="addressid" value="<?php echo $address['id']; ?>">
                                 <button type="submit" name="updateAddress" class="btn btn-success w-100 p-2 fs-5 my-2">Update
                                         Address</button>

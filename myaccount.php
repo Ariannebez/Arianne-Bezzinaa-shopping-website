@@ -136,6 +136,10 @@ if(!empty($error)): ?>
                         <label for="signupEmail">Email</label>
                     </div>
                     <div class="form-floating mb-3">
+                        <input type="input" class="form-control" id="mobile" name="mobile" required>
+                        <label for="mobile">Mobile</label>
+                    </div>
+                    <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="password" name="signupPassword" required>
                         <label for="signupPassword">Password</label>
                     </div>
@@ -164,10 +168,6 @@ if(!empty($error)): ?>
                     <div class="form-floating mb-3">
                         <input type="input" class="form-control" id="region" name="region" required>
                         <label for="region">Region</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="input" class="form-control" id="mobile" name="mobile" required>
-                        <label for="mobile">Mobile</label>
                     </div>
                 </div>
             </div>
