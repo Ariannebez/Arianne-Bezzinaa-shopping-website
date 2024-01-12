@@ -29,6 +29,7 @@ function userLogin($con, $email, $password)
 }
 
 
+//Checking if the user exists
 function CheckUserExists($con, $email)
 {
     // Selecting a user by ID.
@@ -50,11 +51,22 @@ function CheckUserExists($con, $email)
     return false;
 }
 
+//checking if user exists by id
+function userExists($con, $userId) {
+    // Prepare a query to select the user
+    $stmt = $con->prepare("SELECT * FROM user WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    // Check if the user exists
+    return $result->num_rows > 0;
+}
 
-//Get users 
+//Getting users from database 
 function GetUser($con)
 {
-    
+    //selecting all user 
     $sql = "SELECT * FROM user" ; 
 
     $stmt = mysqli_stmt_init($con);
@@ -69,7 +81,7 @@ function GetUser($con)
     return $result;
 }
 
-//role
+//Getting the role
 function GetRole($con)
 {
    
@@ -88,7 +100,7 @@ function GetRole($con)
     return $result;
 }
 
-//get role by id
+//Getting the role by id
 function GetRoleById($con, $StatusId)
 {
    
@@ -160,14 +172,7 @@ function deleteUser($con, $userId) {
             mysqli_stmt_close($stmtUser);
         }
 
-        // Repeat the deletion for the userAdmin table if necessary
-        $sqlUserAdmin = "DELETE FROM user WHERE id = ?;";
-        if ($stmtUser = mysqli_prepare($con, $sqlUser)) {
-            mysqli_stmt_bind_param($stmtUser, "i", $userId);
-            mysqli_stmt_execute($stmtUser);
-            mysqli_stmt_close($stmtUser);
-        }
-
+       
         // Commit the transaction
         mysqli_commit($con);
     } catch (mysqli_sql_exception $exception) {
@@ -254,7 +259,7 @@ function getCategories($con) {
 }
 
 
-//Get product by id
+//Getting product by id
 function GetProductByID($con, $id)
 {
     // Select a user by ID.
@@ -296,8 +301,7 @@ function updateProduct($con, $product)
     return $result;
 }
 
-//Editing user and userAdmin deatails not working 
-//NOT WORKING - adding funcations
+//Editing user deatails 
 function GetUserByID($con, $id) {
     $sql = "SELECT * FROM user WHERE id = ?"; 
     $stmt = mysqli_stmt_init($con);
@@ -319,6 +323,7 @@ function GetUserByID($con, $id) {
     }
 }
 
+//Getting the address by user id
 function GetAddressesByUser($con, $userID)
 {
     $sql = "SELECT * FROM address WHERE userid = '$userID';";
@@ -393,7 +398,7 @@ function updateAddress($con, $address)
     return $result;
 }
 
-//Up date user 
+//Update user 
 function updateUser($con, $user)
 {
     $id = $user["id"];
@@ -413,6 +418,7 @@ function updateUser($con, $user)
     return $result;
 }
 
+//update email 
 function updateUserEmail($con, $user)
 {
     $id = $user["id"];
@@ -430,6 +436,7 @@ function updateUserEmail($con, $user)
     return $result;
 }
 
+//update password
 function updateUserPassword($con, $user)
 {
     $id = $user["id"];
@@ -465,6 +472,8 @@ function deleteOrder($con, $orderId) {
 
     mysqli_stmt_close($stmt);
 }
+
+//edit order 
 
 
 

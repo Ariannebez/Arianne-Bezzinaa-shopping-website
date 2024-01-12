@@ -2,12 +2,12 @@
 require_once 'includes/functions.php';
 require_once 'includes/dbfunctions.php';
 
+//Delete order
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['deleteOrder'])) {
     $orderId = $_POST['deleteOrderId'];
     deleteOrder($con, $orderId);
 
-    // Optional: Add a session message or similar to confirm deletion
-    // Redirect to the same page to refresh the orders list
+   
     header("Location: order-management.php");
     exit();
 }

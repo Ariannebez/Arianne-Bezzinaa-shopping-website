@@ -2,6 +2,7 @@
       require_once 'includes/functions.php';
       require_once 'includes/dbfunctions.php';
       
+      //Getting users and role
       $users = GetUser($con);
       $role = GetRole($con);
       
@@ -22,7 +23,7 @@
 require_once 'includes/header.php'; 
 require_once 'includes/navbar.php'; ?>
 
-<!-- User Data and UserType-->
+<!-- User Data and User Role-->
 <div class="container mt-5">
 
 <h2>User Management</h2>

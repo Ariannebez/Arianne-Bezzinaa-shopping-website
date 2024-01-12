@@ -50,6 +50,7 @@ function CheckUserExists($con, $email)
     return false;
 }
 
+
 //Creating user from sing up area in my account page
 function createUser($con, $user)
 {
@@ -257,6 +258,7 @@ function GetWishlistByUser($con, $userID)
     return $result;
 }
 
+//Getting user by id
 function GetUserByID($con, $id)
 {
     // Selecting a user by ID.
@@ -278,6 +280,7 @@ function GetUserByID($con, $id)
     return false;
 }
 
+//Getting address by user
 function GetAddressesByUser($con, $userID)
 {
     $sql = "SELECT * FROM address WHERE userid = '$userID';";
@@ -300,6 +303,7 @@ function GetAddressesByUser($con, $userID)
     return false;
 }
 
+//Creating order 
 function createOrder($con, $user, $selectedAddress, $cartItems)
 {
     

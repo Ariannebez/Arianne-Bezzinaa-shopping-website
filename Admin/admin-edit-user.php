@@ -2,7 +2,24 @@
 require_once 'includes/functions.php';
 require_once 'includes/dbfunctions.php';
 
+//if user editUserId does not exists go back to user-managment page
+if (isset($_GET['editUserId'])) {
+    $editUserId = $_GET['editUserId'];
 
+    // Check if user exists
+    if (!userExists($con, $editUserId)) {
+        // User does not exist, redirect to user management page
+        header("Location: user-management.php");
+        exit();
+    }
+
+} else {
+    // 'editUserId' not set, redirect to user management page
+    header("Location: user-management.php");
+    exit();
+}
+
+//Getting user and updating it
 $incorrectPassword = null;
 $user = GetUserByID($con, $_GET['editUserId']);
 
