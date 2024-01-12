@@ -63,6 +63,11 @@ h1, h2, h3, h4, h5, h6, p{
     width: 100%; 
 }
   
+.carousel-img {
+    height: 500px; /* Adjust this value as needed */
+    object-fit: cover;
+    width: 100%;
+}
 
 
  

@@ -23,15 +23,7 @@ require_once 'includes/dbfunctions.php';
         <!--Text area col-->
         <div class="col align-self-center">
             <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard
-                dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                essentially unchanged.
-                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
-                more recently
-                with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            CraftedWithLoveStore.com is an enchanting online marketplace where each item tells a story of passion and craftsmanship. Specializing in handmade jewelry, bespoke bags, and unique ceramics, this website is a treasure trove for those who cherish artisanal beauty and individuality. The jewelry collection ranges from delicate, handcrafted earrings to bold, statement necklaces, each piece showcasing the skills of talented artisans. The bag selection offers everything from elegantly stitched leather purses to vibrant, woven totes, perfect for both everyday use and special occasions. The ceramic range is a highlight, featuring beautifully glazed pottery and intricately designed home decor items, each with its own character and charm. CraftedWithLoveStore.com isn't just a shopping destination; it's a celebration of artistry, a platform where skilled artisans from around the world bring their creations to life, and where customers find unique, lovingly made products that truly resonate with their personal style.
             </p>
         </div>
     </div>
