@@ -5,9 +5,10 @@ require_once 'includes/dbfunctions.php';
 if(!isset($_SESSION['USER'])) {
     header("Location: index.php");
 }
-  
-$user = GetUserByID($con, $_SESSION['USER']['id']);
 
+//Getting user by idea 
+$user = GetUserByID($con, $_SESSION['USER']['id']);
+//Getting order by user 
 $orderlist = GetOrdersByUser($con, $user['id']);
 
 require_once 'includes/header.php';

@@ -4,6 +4,7 @@ require_once 'includes/dbfunctions.php';
 $category = null;
 $search = null;
 
+//Search bar, searching for items in shop
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
 
@@ -11,6 +12,7 @@ if (isset($_GET['search'])) {
     $category = $_GET['category'];
 }
 
+//Getting products by category
 $products = GetProducts($con, $category, $search);
 
 require_once 'includes/header.php';
@@ -24,7 +26,7 @@ require_once 'includes/navbar.php';
 </div>
 
 
-<!--old cards-->
+<!--Cards-->
 <div class="container my-4 ">
     <div class="row justify-content-center mb-5">
         <?php foreach ($products as $product): ?>

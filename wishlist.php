@@ -10,7 +10,7 @@ if(!isset($_SESSION['USER'])) {
 $user = GetUserByID($con, $_SESSION['USER']['id']);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  // Check if the 'Add to Cart' button is clicked and a product ID is provided.
+  // Checking if the 'Add to Cart' button is clicked and a product ID is provided.
   if(isset($_POST['addToCart']) && isset($_POST['prodid'])) {
       $cartItems = [];
       $existingProd = null;
@@ -19,11 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       if(isset($_SESSION['CART_ITEMS'])) {
           $cartItems = $_SESSION['CART_ITEMS'];
       }
-      // Check if the product is already in the cart.
+      // Checking if the product is already in the cart.
       if(!empty($cartItems)) {
           foreach($cartItems as $key => $value) {
               if($cartItems[$key]['id']== $_POST['prodid']) {
-                  // Increment the quantity if the product is already in the cart.
+                  // If the item is already in the cart, increase the quantity.
                   $newQuantity = $cartItems[$key]['quantity'] + 1;
                   if($newQuantity <= $cartItems[$key]['stockQty']) {
                       $cartItems[$key]['quantity'] = $newQuantity;
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               }
           }
       }
-      // If the product is not in the cart, add it.
+      // If the product is not in the cart, add it to cart funcation.
       if(!$updated) {
           $product = GetProductByID($con, $_POST['prodid']);
           $prodToAdd["id"] = $product["id"];
@@ -47,24 +47,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           $prodToAdd["quantity"] = 1;
           array_push($cartItems, $prodToAdd);
           
-          // Update the session with the new cart items.
+          // Updating the session with the new cart items.
           $_SESSION['CART_ITEMS'] = $cartItems;
-          // Remove the item from the wishlist.
+          // Removing the item from the wishlist.
           deleteWishlistItem($con, $_POST['prodid'], $_SESSION['USER']["id"]);
 
       }
-      // Check if the 'Remove from Wishlist' button is clicked and a product ID is provided.
+      // Checking if the 'Remove from Wishlist' button is clicked and a product ID is provided.
   } else if(isset($_POST['removeItem']) && isset($_POST['prodid'])) {
       // Remove the item from the wishlist.
       deleteWishlistItem($con, $_POST['prodid'], $_SESSION['USER']["id"]);
   }
 }
 
-// Retrieve wishlist items for the user.
+// Getting the items on the user's wishlist..
 $wishlistItems = GetWishlistByUser($con, $user["id"]);
 $wishlistProducts = [];
 
-// If there are items, get the product details for each.
+// If there are items, getting the product details for each item.
 if (!empty($wishlistItems)) {
   foreach ($wishlistItems as $wishlistProduct) {
       $prod = GetProductByID($con, $wishlistProduct["product"]);

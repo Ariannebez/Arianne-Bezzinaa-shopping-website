@@ -38,12 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 $cartItems = null; // Cart items.
-$total = 0; // Total cost including delivery.
+$total = 0; // The total cost including delivery.
 
-// Calculate totals if there are items in the cart.
+// Calculating totals if there are items in the cart.
 if(isset($_SESSION['CART_ITEMS'])) {
-  $cartItems = $_SESSION['CART_ITEMS']; // Load items from session.
-  // Calculate subtotal from item prices and quantities.
+  $cartItems = $_SESSION['CART_ITEMS']; // Loading items from session.
+  // Calculating subtotal from item prices and quantities.
   foreach($cartItems as $key => $item) {
     $total += $item['price'] * $item['quantity'];
   }

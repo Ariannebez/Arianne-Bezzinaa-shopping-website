@@ -8,23 +8,23 @@ $error = null;
 
 // Checking the request method to handle form submissions
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-    // Login form submitted
+    // Login form submitted?
     if(isset($_POST["email"])) {
-        // Sanitize and store input values
+        // Clear up and save the input values.
         $email = htmlspecialchars(addslashes($_POST['email'])); 
         $password = htmlspecialchars(addslashes($_POST['password']));
 
-        // Attemptting to login the user
+        // Trying to log the user in
         if(userLogin($con, $email, $password)) {
-            // Redirect to profile page upon successful login
+            // Go to profile page upon successful login
             header("Location: profile.php"); 
         }
         else
         {
-            // Setting error message for incorrect credentials
+            // Setting error message for incorrect email or password.
             $error = "Incorrect email or password, try again!";
         }
-        // Account creation form submitted
+        // Account creation form submission
     } else if (isset($_POST["signupEmail"])) {
         // Keeping input values clean and stored.
         $user = [];
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         
         // Checking if user already exists
         if(!CheckUserExists($con, $user['Email'])) {
-            // Create a new user
+            // If not create a new user
             $user['ID'] = createUser($con, $user);
             if($user['ID'] > 0) {
                 // Set UserCreated to true

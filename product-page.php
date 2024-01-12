@@ -21,17 +21,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $cartItems = [];
         $existingProd = null;
         $updated = false;
-        // Check if there are existing cart items in the session.
+        // Checking if there are existing cart items in the session.
         if(isset($_SESSION['CART_ITEMS'])) {
             $cartItems = $_SESSION['CART_ITEMS'];
         }
-        // Loop through cart items to check if the product is already added.
+        // Looping through cart items to check if the product is already added.
         if(!empty($cartItems)) {
             foreach($cartItems as $key => $value) {
-                // If product is found, increase the quantity.
+                // If product is found, increase the amount.
                 if($cartItems[$key]['id'] == $product['id']) {
                     $newQuantity = $cartItems[$key]['stockQty'] + $newQuantity;
-                    // Ensure the new quantity does not exceed stock.
+                    // Ensuring the new amount does not go over stock limit.
                     if($newQuantity <= $product['stockQty']) {
                         $cartItems[$key]['quantity'] = $newQuantity;
                         $_SESSION['CART_ITEMS'] = $cartItems;
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
             }
         }
-        // If the product is not already in the cart, add it.
+        // If the product is not already in the cart, you can add it.
         if(!$updated) {
             if($product['stockQty'] >= $newQuantity) {
                 $prodToAdd["id"] = $product["id"];

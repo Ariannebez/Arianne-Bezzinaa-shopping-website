@@ -2,10 +2,12 @@
 require_once 'includes/functions.php';
 require_once 'includes/dbfunctions.php';
 
+
 if(!isset($_SESSION['USER'])) {
     header("Location: index.php");
 }
   
+//Getting user by id
 $user = GetUserByID($con, $_SESSION['USER']['id']);
 
 require_once 'includes/header.php';

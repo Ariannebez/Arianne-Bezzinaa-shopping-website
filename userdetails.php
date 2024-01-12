@@ -6,8 +6,10 @@ if(!isset($_SESSION['USER'])) {
   header("Location: index.php");
 }
 $incorrectPassword = null;
+//Getting user by id
 $user = GetUserByID($con, $_SESSION['USER']['id']);
 
+//Updating user details
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if(isset($_POST["updateUser"])) {
         $user["firstName"] = $_POST["firstName"];
@@ -46,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if(empty($incorrectPassword)) {
             updateUserPassword($con, $user);
         }
-        // Fetch the updated user details.
+        // Fetching the updated user details.
         $user = GetUserByID($con, $user["id"]);
     } else if(isset($_POST["updateEmail"])) {
         $user["email"] = $_POST["email"];
@@ -73,7 +75,7 @@ require_once 'includes/navbar.php';
         <div class="card">
             <h5 class="card-header">My Profile</h5>
             <div class="card-body">
-                    <!-- Sing Up Form posting info into database using 'POST'-->
+                    <!-- Sing Up Form, posting info into database using 'POST'-->
                     <div class="row">
                         <div class="col-lg-7 col-md-12">
                             <!-- Sing Up -->
